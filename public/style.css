@@ -1,0 +1,214 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --violet: #5F0267;
+}
+
+                    /* En-tete */
+.navUl{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: center;
+    gap:5vw;
+    margin-bottom: 2vw;
+    
+}
+.lien{
+    text-decoration: none;
+    color: black;
+    font-size: 1.2em;
+}
+.banniere,
+.logo{
+    display: flex;
+    align-items: center;
+}
+.imgBanniere{
+    margin: auto auto 3vw auto;
+    width:90vw;
+    height: 22vw;
+}
+.imgLogo{
+    margin: -60px auto 0 auto;
+    width: 15vw;
+    height: 15vw;
+}
+.barrefixe{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1vw;
+    /* position: fixed; */
+}
+.commerce{
+    display: flex;
+    flex-direction: row;
+}
+.panier{
+    margin-left: 2vw;
+}
+
+                    /* Footer */
+.containFooter{
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: var(--violet);
+    height: 10vw;
+    text-align: center;
+    align-items: center;
+    font-size: 1.2em;
+    margin-top: 4vw;
+}
+
+                        /* Contact */
+.contact,
+.titreCompte,
+.quiSommesNous,
+.titreQui,
+.selection,
+.titreFleurs{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1vw;
+}
+.map{
+    display: flex;
+    margin: auto;
+}
+
+.compte{
+    display: flex;
+    justify-content: center;
+    gap: 20vw;
+}
+.lienCompte{
+    text-decoration: none;
+    color: black;
+}
+.connexion{
+    padding: 2vw 0 0 3vw;
+    border: 1px solid black;
+    height: 15vw;
+    width: 22vw;
+}
+.boutonCompte{
+    background-color: var(--violet);
+    color: white;
+}
+.ligneOne,
+.ligneTwo{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: -1vw;
+}
+.selectionBouquet,
+.selection{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2vw;
+}
+.carreOne,
+.carreTwo{
+    width: 50%;
+}
+.carre{
+    height: 33vw;
+    width: 45vw;
+}
+.presentation{
+    width: 90vw;
+    margin: auto;
+}
+.ligneOne .carreTwo,
+.ligneTwo .carreOne{
+    padding: 5vw;
+    background-color: #F5F5F5;
+}
+.quiSommesNous,
+.selection{
+    text-decoration: underline;
+    margin-bottom: 4vw;
+}
+
+.imgVteFleur{
+    width: 27vw;
+    height: 17vw;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+.selectionBouquet{
+    gap:5vw;
+    justify-content: center;
+}
+.cadreBouquet{
+    margin-bottom: 3vw;
+}
+.titreSelection{
+    margin-left: 5vw;
+    margin-bottom: 1vw;
+}
+.map2{
+    display: flex;
+    margin: 4vw auto;
+}
+.ajouterPanier{
+    width: 27vw;
+    height: 3vw;
+    margin-top: 1vw;
+}
+.voirFleurs{
+    display: flex;
+    margin: 3vw auto;
+    height: 3vw;
+    width: 15vw;
+    justify-content: center;
+    align-items: center;
+    background-color: #5F0267;
+    color: white;
+}
+button{
+    border-radius: 10px;
+    border: 1px solid black;
+}
+.filtre{
+    height: 3vw;
+    width: 10vw;
+}
+.containerGrid1{
+    display: grid;
+    grid-template-columns:
+      minmax(5.4vw, 1fr)
+      [start]
+      repeat(8, minmax(min-content, 14vw))
+      [end]
+      minmax(5.4vw, 1fr);
+  
+}
+.containGrid2 {
+    grid-column: start / end;
+    margin: 3vw 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+    gap: 5vw;
+  }
+  .ensFiltre,
+  .selectCouleurs{
+    margin-left: 5vw;
+    margin-right: 5vw;
+    display: flex;
+  }
+  .ensFiltre{
+    gap: 5vw;
+  }
+  .selectCouleurs{
+    gap:2vw;
+    margin-top: 1vw;
+  }
+
+  
