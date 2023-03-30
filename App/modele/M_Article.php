@@ -30,8 +30,18 @@ class M_Article {
         return $lesLignes;
     }
 
-    public static function trouveLesArticlesSelectionnes() {
+    public static function trouveLesBouquetsSelectionnes() {
         $req = "SELECT nom, prix, photo, categorie_id1 FROM article WHERE selection = 1 AND categorie_id1 =5";
+        $pdo=AccesDonnees::getPdo();
+        $statement=$pdo->prepare($req);
+        $statement->execute();
+
+        $lesLignes = $statement->fetchAll();
+        return $lesLignes;
+    }
+
+    public static function trouveLesFleurSelectionnees() {
+        $req = "SELECT nom, prix, photo, categorie_id1 FROM article WHERE selection = 1 AND categorie_id1 =1";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($req);
         $statement->execute();

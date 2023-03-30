@@ -19,7 +19,8 @@ switch ($action) {
         $_SESSION['jeux_vues'] = $lesJeux;
         break;
     case 'voirSelection':
-        $lesArticles = M_Article::trouveLesArticlesSelectionnes();
+        $lesBouquets = M_Article::trouveLesBouquetsSelectionnes();
+        $lesFleurs = M_Article::trouveLesFleurSelectionnees();
         break;
     case 'voirTousLesArticles':
         $articles = M_Article::trouveLesArticles();

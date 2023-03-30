@@ -8,18 +8,18 @@
             <h2 class="titreSelection">Bouquets</h2>
             <div class="selectionBouquet">
                 <?php
-                foreach ($lesArticles as $unArticle) {
-                    $nom = $unArticle['nom'];
-                    $prix = $unArticle['prix'];
-                    $photo = $unArticle['photo'];
-                    $categorie = $unArticle['categorie_id1'];
+                foreach ($lesBouquets as $unBouquet) {
+                    $nom = $unBouquet['nom'];
+                    $prix = $unBouquet['prix'];
+                    $photo = $unBouquet['photo'];
+                    $categorie = $unBouquet['categorie_id1'];
 
                 ?>
                     <div>
                         <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur" />
                         <div>
                             <p><?= $nom ?></p>
-                            <p><?= $prix ?></p>
+                            <p><?= $prix." €" ?></p>
                             <button class="ajouterPanier">Ajouter au panier</button>
                         </div>
 
@@ -35,21 +35,34 @@
             <div class="cadreBouquet">
                 <h2 class="titreSelection">Fleurs</h2>
                 <div class="selectionBouquet">
+                <?php
+                foreach ($lesFleurs as $uneFleur) {
+                    $nom = $uneFleur['nom'];
+                    $prix = $uneFleur['prix'];
+                    $photo = $uneFleur['photo'];
+                    $categorie = $uneFleur['categorie_id1'];
+
+                ?>
                     <div>
-                        <img src="./public/photo/pivoine.jpg" alt="photo bouquet" class="imgVteFleur">
+                    <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur" />
                         <div>
                             <p><?= $nom ?></p>
-                            <p><?= $prix ?></p>
+                            <p><?= $prix." €" ?></p>
                             <button class="ajouterPanier">Ajouter au panier</button>
                         </div>
 
                     </div>
-
+                    <?php
+                }
+                ?>
                 </div>
-                
+
             </div>
+
         </div>
+        <a href="index.php?uc=nosFleurs&action=voirTousLesArticles">
         <button class="voirFleurs">Voir nos fleurs</button>
+        </a>
     </div>
 
     <?php
