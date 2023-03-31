@@ -17,13 +17,31 @@ class M_Article {
      * @param $idCategorie
      * @return un tableau associatif
      */
-    public static function trouveLesJeuxDeCategorie($idCategorie) {
-        $req = self::sql."WHERE id_categories = :idCat";
-        // $req = "SELECT * FROM exemplaires WHERE categorie_id = '$idCategorie'";
-        // $res = AccesDonnees::query($req);
+    public static function trouveTousLesArticles() {
+        $req = "SELECT nom, prix, photo, categorie_id1 FROM article";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($req);
-        $statement->bindParam(':idCat',$idCategorie, PDO::PARAM_INT);
+        $statement->execute();
+
+        $lesLignes = $statement->fetchAll();
+        return $lesLignes;
+    }
+
+    public static function trouveTousLesArticlesParCategorie($categorie) {
+        $req = "SELECT nom, prix, photo, categorie_id1 FROM article WHERE categorie_id1 = :categorie";
+        $pdo=AccesDonnees::getPdo();
+        $statement=$pdo->prepare($req);
+        $statement->bindParam('categorie', $categorie, PDO::PARAM_INT);
+        $statement->execute();
+
+        $lesLignes = $statement->fetchAll();
+        return $lesLignes;
+    }
+
+    public static function trouveLesCategories() {
+        $req = "SELECT nom, id FROM categorie";
+        $pdo=AccesDonnees::getPdo();
+        $statement=$pdo->prepare($req);
         $statement->execute();
 
         $lesLignes = $statement->fetchAll();

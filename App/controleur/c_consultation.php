@@ -7,23 +7,21 @@ include 'App/modele/M_article.php';
  */
 switch ($action) {
     case 'accueil':
-        if(isset($_SESSION['jeux_vues'])){
-           $lesJeux = $_SESSION['jeux_vues'];
-        }else {
-            $lesJeux = [];
-        }
-        break;
-    case 'voirJeux':
-        $categorie = filter_input(INPUT_GET, 'categorie');
-        $lesJeux = M_Article::trouveLesJeuxDeCategorie($categorie);
-        $_SESSION['jeux_vues'] = $lesJeux;
-        break;
-    case 'voirSelection':
         $lesBouquets = M_Article::trouveLesBouquetsSelectionnes();
         $lesFleurs = M_Article::trouveLesFleurSelectionnees();
         break;
     case 'voirTousLesArticles':
-        $articles = M_Article::trouveLesArticles();
+        $categorie = filter_input(INPUT_GET, 'categorie');  
+        $lesArticles = M_Article::trouveTousLesArticles();
+        $lesCategories = M_Categorie::trouveTousLesCategories();
+        break;
+    case 'voirParCategorie':
+            $categorie = filter_input(INPUT_GET, 'categorie');  
+            $lesArticles = M_Article::trouveTousLesArticlesParCategorie($categorie);
+        break;  
+    case 'voirSelection':
+        $lesBouquets = M_Article::trouveLesBouquetsSelectionnes();
+        $lesFleurs = M_Article::trouveLesFleurSelectionnees();
         break;
     case 'ajouterAuPanier':
         $idJeu = filter_input(INPUT_GET, 'jeu');
@@ -41,4 +39,4 @@ switch ($action) {
         break;
 }
 
-//$lesCategories = M_Categorie::trouveLesCategories();
+$lesCategories = M_Categorie::trouveTousLesCategories();

@@ -3,7 +3,7 @@
 /**
  * Les jeux sont rangés par catégorie
  *
- * @author Loic LOG
+ * 
  */
 class M_Categorie {
 
@@ -12,11 +12,10 @@ class M_Categorie {
      *
      * @return le tableau associatif des catégories
      */
-    public static function trouveLesCategories() {
-        $req = "SELECT * FROM categories";
+    public static function trouveTousLesCategories() {
+        $req = "SELECT nom, id FROM categorie";
         $res = AccesDonnees::query($req);
-        $lesLignes = $res->fetchAll();
-        return $lesLignes;
+    $lesLignes = $res->fetchAll();
+    return $lesLignes;
     }
-
 }

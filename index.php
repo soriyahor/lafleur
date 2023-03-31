@@ -17,6 +17,7 @@ initPanier();
 
 if (!$uc) {
     $uc = 'accueil';
+    $action = 'accueil';
 }
 
 // Controleur principale
@@ -24,7 +25,7 @@ switch ($uc) {
     case 'accueil':
         include 'App/controleur/c_consultation.php';
         break;
-    case 'visite':
+    case 'nosFleurs':
         include 'App/controleur/c_consultation.php';
         break;
     case 'panier':
