@@ -210,5 +210,7 @@ button{
     gap:2vw;
     margin-top: 1vw;
   }
-
+.cache{
+    display: none;
+}
   

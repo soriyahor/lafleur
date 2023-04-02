@@ -6,7 +6,7 @@
             $idCategorie = $uneCategorie['id'];
             $nomCategorie = $uneCategorie['nom'];
         ?>
-        <a href=index.php?uc=nosFleurs&categorie=<?php echo $idCategorie ?>&action=voirParCategorie><button class="filtre"><?= $nomCategorie ?></button></a>
+            <a href=index.php?uc=nosFleurs&categorie=<?php echo $idCategorie ?>&action=voirParCategorie><button class="filtre"><?= $nomCategorie ?></button></a>
         <?php
         }
         ?>
@@ -14,13 +14,23 @@
     </div>
 
     <div class="selectCouleurs">
-        <label for="couleurs" name="couleurs">Couleurs :</label>
-        <input type="checkbox" name="couleurs" id="colorRed"> <label for="couleurs">Rouge</label>
-        <input type="checkbox" name="couleurs" id="colorWhite"> <label for="couleurs">Blanc</label>
-        <input type="checkbox" name="couleurs" id="colorYellow"> <label for="couleurs">Jaune</label>
-        <input type="checkbox" name="couleurs" id="colorPink"> <label for="couleurs">Rose</label>
+        <form action="" method="get">
+            <input type="text" name="uc" value="nosFleurs" class="cache">
+            <input type="text" name="action" value="voirParCouleur" class="cache">
+            <label for="couleurs" name="couleurs">Couleurs :</label>
+            <?php
+            foreach ($lesCouleurs as $uneCouleur) {
+                $idCouleur = $uneCouleur['id'];
+                $nomCouleur = $uneCouleur['nom'];
+            ?>
+                <input type="checkbox" name="couleur" id="color <?= $idCouleur ?>" value="<?= $nomCouleur ?>"> <label for="couleurs"><?= $nomCouleur ?></label>
 
-        <input type="submit" value="Valider"><br>
+            <?php
+            }
+            ?>
+
+            <input type="submit" value="Valider"><br>
+        </form>
     </div>
 
     <div class="containerGrid1">

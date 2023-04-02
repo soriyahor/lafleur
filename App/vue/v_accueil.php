@@ -61,7 +61,7 @@
 
         </div>
         <a href="index.php?uc=nosFleurs&action=voirTousLesArticles">
-        <button class="voirFleurs">Voir nos fleurs</button>
+        <button class="voirFleurs">Voir nos fleurs</button></a>
         </a>
     </div>
 
