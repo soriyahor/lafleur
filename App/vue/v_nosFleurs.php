@@ -10,7 +10,9 @@
         <?php
         }
         ?>
-        <button class="filtre">Bouquets</button><br>
+
+        <a href=index.php?uc=nosFleurs&conditionnement=lesbouquets&action=voirLesBouquets><button class="filtre">Bouquets</button></a><br>
+    
     </div>
 
     <div class="selectCouleurs">

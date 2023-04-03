@@ -12,7 +12,8 @@ switch ($action) {
         break;
     case 'voirTousLesArticles':
         $categorie = filter_input(INPUT_GET, 'categorie'); 
-        $couleur = filter_input(INPUT_GET, 'couleur');  
+        $couleur = filter_input(INPUT_GET, 'couleur');
+        $bouquet = filter_input(INPUT_GET, 'bouquet');  
         $lesArticles = M_Article::trouveTousLesArticles();
         $lesCategories = M_Categorie::trouveTousLesCategories();
         
@@ -21,6 +22,10 @@ switch ($action) {
             $categorie = filter_input(INPUT_GET, 'categorie');  
             $lesArticles = M_Article::trouveTousLesArticlesParCategorie($categorie);
         break;  
+    case 'voirLesBouquets': 
+        $bouquet = filter_input(INPUT_GET, 'bouquet'); 
+        $lesArticles = M_Article::trouveLesBouquets();
+        break;      
     case 'voirParCouleur':
         $couleur = filter_input(INPUT_GET, 'couleur'); 
         $lesArticles = M_Article::trouveTousLesArticlesParCouleur($couleur);
@@ -47,3 +52,4 @@ switch ($action) {
 }
 $lesCouleurs = M_article::trouveToutesLesCouleurs();
 $lesCategories = M_Categorie::trouveTousLesCategories();
+$unBouquet = M_Article::trouveLesBouquets();

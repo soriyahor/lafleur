@@ -30,7 +30,7 @@ class M_Compte
         $idAdresse = AccesDonnees::getPdo()->lastInsertId();
 
         $mdp = password_hash($mdp, PASSWORD_BCRYPT);
-        $reqClient = "insert into clients(nom, prenom, email, mdp, id_adresse) values ('$nom','$prenom', '$mail', '$mdp', '$idAdresse')";
+        $reqClient = "insert into client(nom, prenom, email, mdp, id_adresse) values ('$nom','$prenom', '$mail', '$mdp', '$idAdresse')";
         $resClient = AccesDonnees::exec($reqClient);
         $idClient = AccesDonnees::getPdo()->lastInsertId();
     }
@@ -55,8 +55,8 @@ class M_Compte
      */
     public static function utilisateur_existe($mail)
     {
-        $sql = 'SELECT 1 FROM clients ';
-        $sql .= 'WHERE email = :mail';
+        $sql = 'SELECT 1 FROM client ';
+        $sql .= 'WHERE mail = :mail';
 
         // prepare and bind
         $pdo = AccesDonnees::getPdo();
@@ -142,8 +142,8 @@ class M_Session
      */
     function compte_existe($mail, $mdp)
     {
-        $sql = 'SELECT 1 FROM clients ';
-        $sql .= 'WHERE email = :mail AND mdp = :mdp';
+        $sql = 'SELECT 1 FROM client ';
+        $sql .= 'WHERE mail = :mail AND mdp = :mdp';
 
         // prepare and bind
         $pdo = AccesDonnees::getPdo();
@@ -178,7 +178,7 @@ class M_Session
     public static function checkPassword(String $mail, String $mdp)
     {
 
-        $sql = "SELECT email, mdp FROM clients WHERE email = :mail";
+        $sql = "SELECT mail, mdp FROM client WHERE mail = :mail";
         $pdo = AccesDonnees::getPdo();
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":mail", $mail, PDO::PARAM_STR);

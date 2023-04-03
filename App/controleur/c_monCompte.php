@@ -5,7 +5,7 @@ include 'App/modele/M_Commande.php';
 
 /**
  * Controleur pour se connecter
- * @author Loic LOG
+ * 
  */
 switch ($action) {
     case 'historique':
