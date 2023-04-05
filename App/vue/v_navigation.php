@@ -6,7 +6,7 @@
             <div>00.00.00.00.00</div>
             <div class="commerce">
                 <div><a href="index.php?uc=compte" class="lienCompte">Compte</a></div>
-                <div class="panier">Panier</div>
+                <div class="panier"><a href="index.php?uc=panier"> Panier</a></div>
             </div>
 
         </div>

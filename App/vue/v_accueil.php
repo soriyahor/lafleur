@@ -9,6 +9,7 @@
             <div class="selectionBouquet">
                 <?php
                 foreach ($lesBouquets as $unBouquet) {
+                    $id = $unBouquet['id'];
                     $nom = $unBouquet['nom'];
                     $prix = $unBouquet['prix'];
                     $photo = $unBouquet['photo'];
@@ -19,8 +20,10 @@
                         <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur" />
                         <div>
                             <p><?= $nom ?></p>
-                            <p><?= $prix." €" ?></p>
-                            <button class="ajouterPanier">Ajouter au panier</button>
+                            <p><?= $prix . " €" ?></p>
+                            <a href="index.php?uc=visite&categorie=<?= $categorie ?>&jeu=<?= $id ?>&action=ajouterAuPanier">
+                                <button class="ajouterPanier">Ajouter au panier</button>
+                            </a>
                         </div>
 
                     </div>
@@ -35,33 +38,36 @@
             <div class="cadreBouquet">
                 <h2 class="titreSelection">Fleurs</h2>
                 <div class="selectionBouquet">
-                <?php
-                foreach ($lesFleurs as $uneFleur) {
-                    $nom = $uneFleur['nom'];
-                    $prix = $uneFleur['prix'];
-                    $photo = $uneFleur['photo'];
-                    $categorie = $uneFleur['categorie_id1'];
-
-                ?>
-                    <div>
-                    <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur" />
-                        <div>
-                            <p><?= $nom ?></p>
-                            <p><?= $prix." €" ?></p>
-                            <button class="ajouterPanier">Ajouter au panier</button>
-                        </div>
-
-                    </div>
                     <?php
-                }
-                ?>
+                    foreach ($lesFleurs as $uneFleur) {
+                        $id = $unBouquet['id'];
+                        $nom = $uneFleur['nom'];
+                        $prix = $uneFleur['prix'];
+                        $photo = $uneFleur['photo'];
+                        $categorie = $uneFleur['categorie_id1'];
+
+                    ?>
+                        <div>
+                            <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur" />
+                            <div>
+                                <p><?= $nom ?></p>
+                                <p><?= $prix . " €" ?></p>
+                                <a href="index.php?uc=visite&categorie=<?= $categorie ?>&jeu=<?= $id ?>&action=ajouterAuPanier">
+                                    <button class="ajouterPanier">Ajouter au panier</button>
+                                </a>
+                            </div>
+
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
 
             </div>
 
         </div>
         <a href="index.php?uc=nosFleurs&action=voirTousLesArticles">
-        <button class="voirFleurs">Voir nos fleurs</button></a>
+            <button class="voirFleurs">Voir nos fleurs</button></a>
         </a>
     </div>
 

@@ -36,6 +36,9 @@
         case 'compte':
             include 'v_compte.php';
             break;
+        case 'panier':
+            include 'v_panier.php';
+            break;
         case '':
             include 'v_accueil.php';
             break;

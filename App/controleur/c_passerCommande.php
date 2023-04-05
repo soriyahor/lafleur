@@ -8,7 +8,7 @@ include 'App/modele/M_commande.php';
  */
 switch ($action) {
     case 'passerCommande':
-        $n = nbJeuxDuPanier();
+        $n = nbArticlesDuPanier();
         if ($n > 0) {
             $nom = '';
             $prenom = '';
@@ -23,8 +23,8 @@ switch ($action) {
         }
         break;
     case 'confirmerCommande':
-        $lesIdJeu = getLesIdJeuxDuPanier();
-        $errors = M_Commande::creerCommande($lesIdJeu);
+        $lesIdJeu = getLesIdArticlesDuPanier();
+        $errors = M_Commande::creerCommande($lesIdArticle);
         if (count($errors) > 0) {
             afficheErreurs($errors);
         } else {

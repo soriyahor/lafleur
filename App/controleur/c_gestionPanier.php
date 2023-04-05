@@ -5,14 +5,14 @@ include 'App/modele/M_article.php';
  * @author Loic LOG
  */
 switch ($action) {
-    case 'supprimerUnJeu':
-        $idJeu = filter_input(INPUT_GET, 'jeu');
-        retirerDuPanier($idJeu);
+    case 'supprimerUnArticle':
+        $idJeu = filter_input(INPUT_GET, 'article');
+        retirerDuPanier($idArticle);
     case 'voirPanier':
-        $n = nbJeuxDuPanier();
+        $n = nbArticlesDuPanier();
         if ($n > 0) {
-            $desIdJeu = getLesIdJeuxDuPanier();
-            $lesJeuxDuPanier = M_Article::trouveLesJeuxDuTableau($desIdJeu);
+            $desIdArticle = getLesIdArticlesDuPanier();
+            $lesArticlesDuPanier = M_Article::trouveLesArticlesDuTableau($desIdArticle);
         } else {
             afficheMessage("Panier Vide !!");
             $uc = '';

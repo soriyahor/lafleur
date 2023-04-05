@@ -21,23 +21,35 @@ class M_Compte
     public static function CreerInscription($nom, $prenom, $numRue, $rue, $cp, $ville, $mail, $mdp)
     {
 
+        //chercher dans bdd les ids la ville par le nom et le codepostal
+
+        
+
         $reqVille = "insert into ville(nom) values ('$ville')";
         $resVille = AccesDonnees::exec($reqVille);
         $idVille = AccesDonnees::getPdo()->lastInsertId();
 
-        $reqAdresse = "insert into adresse(numero, rue, cp, id_ville) values ('$numRue', '$rue', '$cp', '$idVille')";
+        $reqCp = "insert into codePostal(cp) values ('$cp')";
+        $resCp = AccesDonnees::exec($reqCp);
+        $idCp = AccesDonnees::getPdo()->lastInsertId();
+
+        $reqAdresse = "insert into adresse(numero, rue, codePostal_id, ville_id) values ('$numRue', '$rue', '$idCp', '$idVille')";
         $resAdresse = AccesDonnees::exec($reqAdresse);
         $idAdresse = AccesDonnees::getPdo()->lastInsertId();
 
         $mdp = password_hash($mdp, PASSWORD_BCRYPT);
-        $reqClient = "insert into client(nom, prenom, email, mdp, id_adresse) values ('$nom','$prenom', '$mail', '$mdp', '$idAdresse')";
+        $reqClient = "insert into client(nom, prenom, mail, mdp) values ('$nom','$prenom', '$mail', '$mdp')";
+        $resClient = AccesDonnees::exec($reqClient);
+        $idClient = AccesDonnees::getPdo()->lastInsertId();
+
+        $reqClient = "insert into adresse_client(client_id, adresse_id) values ('$idClient', '$idAdresse')";
         $resClient = AccesDonnees::exec($reqClient);
         $idClient = AccesDonnees::getPdo()->lastInsertId();
     }
 
     public static function recupererUtilisateur($mail) {
-        $sql = 'SELECT * FROM clients ';
-        $sql .= 'WHERE email = :mail';
+        $sql = 'SELECT * FROM client ';
+        $sql .= 'WHERE mail = :mail';
 
         // prepare and bind
         $pdo = AccesDonnees::getPdo();
@@ -104,9 +116,6 @@ class M_Compte
         }
         if ($prenom == "") {
             $erreurs[] = "Il faut saisir le champ prenom";
-        }
-        if ($numRue == "") {
-            $erreurs[] = "Il faut saisir le champ numéro rue";
         }
         if ($rue == "") {
             $erreurs[] = "Il faut saisir le champ rue";

@@ -36,18 +36,18 @@ switch ($action) {
         $lesFleurs = M_Article::trouveLesFleurSelectionnees();
         break;
     case 'ajouterAuPanier':
-        $idJeu = filter_input(INPUT_GET, 'jeu');
+        $idArticle = filter_input(INPUT_GET, 'article');
         $categorie = filter_input(INPUT_GET, 'categorie');
-        if (!ajouterAuPanier($idJeu)) {
-            afficheErreurs(["Ce jeu est déjà dans le panier !!"]);
+        if (!ajouterAuPanier($idArticle)) {
+            afficheErreurs(["Cet article est déjà dans le panier !!"]);
         } else {
-            afficheMessage("Ce jeu a été ajouté");
+            afficheMessage("Cet article a été ajouté");
         }
-        $lesJeux = M_Article::trouveLesArticles();
+        $lesArticles = M_Article::trouveLesArticles();
         // $lesJeux = M_Exemplaire::trouveLesJeuxDeCategorie($categorie);
         break;
     default:
-        $lesJeux = [];
+        $lesArticles = [];
         break;
 }
 $lesCouleurs = M_article::trouveToutesLesCouleurs();

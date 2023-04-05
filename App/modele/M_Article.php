@@ -3,7 +3,7 @@
 /**
  * Requetes sur les exemplaires  de jeux videos
  *
- * @author Loic LOG
+ * @author 
  */
 class M_Article {
 
@@ -71,7 +71,7 @@ class M_Article {
     }
 
     public static function trouveLesBouquetsSelectionnes() {
-        $req = "SELECT nom, prix, photo, categorie_id1 FROM article WHERE selection = 1 AND categorie_id1 =5";
+        $req = "SELECT id, nom, prix, photo, categorie_id1 FROM article WHERE selection = 1 AND categorie_id1 =5";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($req);
         $statement->execute();
@@ -81,7 +81,7 @@ class M_Article {
     }
 
     public static function trouveLesFleurSelectionnees() {
-        $req = "SELECT nom, prix, photo, categorie_id1 FROM article WHERE selection = 1 AND categorie_id1 =1";
+        $req = "SELECT id, nom, prix, photo, categorie_id1 FROM article WHERE selection = 1 AND categorie_id1 =1";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($req);
         $statement->execute();
@@ -105,12 +105,12 @@ class M_Article {
      * @param $desIdJeux tableau d'idProduits
      * @return un tableau associatif
      */
-    public static function trouveLesJeuxDuTableau($desIdJeux) {
-        $nbProduits = count($desIdJeux);
+    public static function trouveLesArticlesDuTableau($desIdArticles) {
+        $nbProduits = count($desIdArticles);
         $lesProduits = array();
         if ($nbProduits != 0) {
-            foreach ($desIdJeux as $unIdProduit) {
-                $req = self::sql."WHERE e.id = :unIdProduit";
+            foreach ($desIdArticles as $unIdProduit) {
+                $req = "SELECT nom, prix, photo, categorie_id1 FROM article";
                 $pdo=AccesDonnees::getPdo();
                 $statement=$pdo->prepare($req);
                 $statement->bindParam('unIdProduit', $unIdProduit, PDO::PARAM_INT);

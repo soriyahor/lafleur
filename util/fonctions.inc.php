@@ -7,8 +7,8 @@
  * où elle n'existe pas 
  */
 function initPanier() {
-    if (!isset($_SESSION['jeux'])) {
-        $_SESSION['jeux'] = array();
+    if (!isset($_SESSION['articles'])) {
+        $_SESSION['articles'] = array();
     }
 }
 
@@ -18,7 +18,7 @@ function initPanier() {
  * Supprime la variable de type session 
  */
 function supprimerPanier() {
-    unset($_SESSION['jeux']);
+    unset($_SESSION['article']);
 }
 
 /**
@@ -30,10 +30,10 @@ function supprimerPanier() {
  * @param $idJeu : identifiant de jeu
  * @return vrai si le jeu n'était pas dans la variable, faux sinon 
  */
-function ajouterAuPanier($idJeu) {
+function ajouterAuPanier($idArticle) {
     $ok = false;
-    if (!in_array($idJeu, $_SESSION['jeux'])) {
-        $_SESSION['jeux'][] = $idJeu;
+    if (!in_array($idArticle, $_SESSION['articles'])) {
+        $_SESSION['jeux'][] = $idArticle;
         $ok = true;
     }
     return $ok;
@@ -45,8 +45,8 @@ function ajouterAuPanier($idJeu) {
  * Retourne le tableau des identifiants de jeu
  * @return : le tableau
  */
-function getLesIdJeuxDuPanier() {
-    return $_SESSION['jeux'];
+function getLesIdArticlesDuPanier() {
+    return $_SESSION['articles'];
 }
 
 /**
@@ -56,10 +56,10 @@ function getLesIdJeuxDuPanier() {
  * et retourne le nombre d'éléments de la variable session
  * @return : le nombre 
  */
-function nbJeuxDuPanier() {
+function nbArticlesDuPanier() {
     $n = 0;
-    if (isset($_SESSION['jeux'])) {
-        $n = count($_SESSION['jeux']);
+    if (isset($_SESSION['articles'])) {
+        $n = count($_SESSION['articles']);
     }
     return $n;
 }
@@ -73,8 +73,8 @@ function nbJeuxDuPanier() {
 
  */
 function retirerDuPanier($idProduit) {
-    $index = array_search($idProduit, $_SESSION['jeux']);
-    unset($_SESSION['jeux'][$index]);
+    $index = array_search($idProduit, $_SESSION['articles']);
+    unset($_SESSION['articles'][$index]);
 }
 
 /**

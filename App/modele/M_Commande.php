@@ -3,7 +3,6 @@
 /**
  * Requetes sur les commandes
  *
- * @author Loic LOG
  */
 class M_Commande
 {
@@ -22,7 +21,7 @@ class M_Commande
      * @param $listJeux
 
      */
-    public static function creerCommande($listJeux)
+    public static function creerCommande($listArticles)
     {
         $erreurs = [];
         if(!isset($_SESSION['client'])){
@@ -43,16 +42,16 @@ class M_Commande
         // AccesDonnees::exec($reqCommande);
         $idCommande = AccesDonnees::getPdo()->lastInsertId();
 
-        foreach ($listJeux as $jeu) {
-            $reqJeu = "select * from exemplaires where id = :jeu";
+        foreach ($listArticles as $article) {
+            $reqArticle = "select * from exemplaires where id = :jeu";
             $pdo=AccesDonnees::getPdo();
-            $statement=$pdo->prepare($reqJeu);
-            $statement->bindParam(':jeu',$jeu, PDO::PARAM_INT);
+            $statement=$pdo->prepare($reqArticle);
+            $statement->bindParam(':article',$article, PDO::PARAM_INT);
             $statement->execute();
-            $jeuBDD = $statement->fetch(PDO::FETCH_ASSOC);
-            $prix = $jeuBDD['prix'];
+            $articleBDD = $statement->fetch(PDO::FETCH_ASSOC);
+            $prix = $articleBDD['prix'];
 
-            $req = "insert into lignes_commande(commande_id, exemplaire_id, prix, quantite) values ('$idCommande','$jeu', '$prix', 1)";
+            $req = "insert into lignes_commande(commande_id, exemplaire_id, prix, quantite) values ('$idCommande','$article', '$prix', 1)";
             AccesDonnees::exec($req);
         }
         return $erreurs;
@@ -114,9 +113,6 @@ class M_Commande
         }
         if ($prenom == "") {
             $erreurs[] = "Il faut saisir le champ prenom";
-        }
-        if ($numRue == "") {
-            $erreurs[] = "Il faut saisir le champ numéro rue";
         }
         if ($rue == "") {
             $erreurs[] = "Il faut saisir le champ rue";
