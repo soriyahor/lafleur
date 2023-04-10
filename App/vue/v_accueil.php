@@ -21,7 +21,9 @@
                         <div>
                             <p><?= $nom ?></p>
                             <p><?= $prix . " €" ?></p>
-                            <a href="index.php?uc=visite&categorie=<?= $categorie ?>&jeu=<?= $id ?>&action=ajouterAuPanier">
+                            <label for="quantite">Quantite</label>
+                            <input type="number"min="0"max="">
+                            <a href="index.php?uc=accueil&categorie=<?= $categorie ?>&article=<?= $id ?>&quantite=2&action=ajouterAuPanier">
                                 <button class="ajouterPanier">Ajouter au panier</button>
                             </a>
                         </div>
@@ -52,7 +54,9 @@
                             <div>
                                 <p><?= $nom ?></p>
                                 <p><?= $prix . " €" ?></p>
-                                <a href="index.php?uc=visite&categorie=<?= $categorie ?>&jeu=<?= $id ?>&action=ajouterAuPanier">
+                                <label for="quantite">Quantité</label>
+                                <input type="number"min="0"max="">
+                                <a href="index.php?uc=accueil&categorie=<?= $categorie ?>&article=<?= $id ?>&quantite=2&action=ajouterAuPanier">
                                     <button class="ajouterPanier">Ajouter au panier</button>
                                 </a>
                             </div>

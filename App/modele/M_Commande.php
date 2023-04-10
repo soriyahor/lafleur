@@ -43,7 +43,7 @@ class M_Commande
         $idCommande = AccesDonnees::getPdo()->lastInsertId();
 
         foreach ($listArticles as $article) {
-            $reqArticle = "select * from exemplaires where id = :jeu";
+            $reqArticle = "SELECT * from exemplaires where id = :jeu";
             $pdo=AccesDonnees::getPdo();
             $statement=$pdo->prepare($reqArticle);
             $statement->bindParam(':article',$article, PDO::PARAM_INT);

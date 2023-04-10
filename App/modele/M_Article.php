@@ -106,21 +106,24 @@ class M_Article {
      * @return un tableau associatif
      */
     public static function trouveLesArticlesDuTableau($desIdArticles) {
-        $nbProduits = count($desIdArticles);
-        $lesProduits = array();
-        if ($nbProduits != 0) {
-            foreach ($desIdArticles as $unIdProduit) {
-                $req = "SELECT nom, prix, photo, categorie_id1 FROM article";
+        $nbArticles = count($desIdArticles);
+        $lesArticles = array();
+        if ($nbArticles != 0) {
+            foreach ($desIdArticles as $unIdArticle => $quantite) {
+                
+                $req = "SELECT id, nom, prix, photo, categorie_id1 FROM article WHERE id = :unIdArticle";
                 $pdo=AccesDonnees::getPdo();
                 $statement=$pdo->prepare($req);
-                $statement->bindParam('unIdProduit', $unIdProduit, PDO::PARAM_INT);
+                $statement->bindParam('unIdArticle', $unIdArticle, PDO::PARAM_INT);
                 $statement->execute();
-                // $res = AccesDonnees::query($req);
-                $unProduit = $statement->fetch();
-                $lesProduits[] = $unProduit;
+            
+                $unArticle = $statement->fetch();
+                $unArticle['quantite']=$quantite;
+                
+                $lesArticles[] = $unArticle;
             }
         }
-        return $lesProduits;
+        return $lesArticles;
     }
 
     public static function trouveLesArticles(){

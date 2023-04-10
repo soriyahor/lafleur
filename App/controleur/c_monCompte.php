@@ -46,14 +46,15 @@ switch ($action) {
             // Si une erreur, on recommence
             afficheErreurs($errors);
         } else {
-            afficheMessage("Vous etes connecté");
             $uc = '';
             if(!isset($_SESSION['client'])){
                 $utilisateur = M_Compte::recupererUtilisateur($mail);
                 $client = new Client($utilisateur['id'], $utilisateur['nom'], date('\l\e d/m/Y à H:i:s'), $mail);
                 $_SESSION['client'] = $client;
             }
+            header('location: index.php');
         }
+        
         break;
     case 'deconnexion':
         M_Session::deconnexion();

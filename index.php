@@ -17,7 +17,10 @@ initPanier();
 
 if (!$uc) {
     $uc = 'accueil';
-    $action = 'accueil';
+}
+if(!$action && $uc == 'accueil' ){
+    $action = 'voirSelection';
+
 }
 
 // Controleur principale

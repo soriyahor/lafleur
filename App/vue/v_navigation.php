@@ -4,9 +4,17 @@
 
         <div class="barrefixe">
             <div>00.00.00.00.00</div>
+            <?php 
+                var_dump($_SESSION);
+                ?>
             <div class="commerce">
                 <div><a href="index.php?uc=compte" class="lienCompte">Compte</a></div>
-                <div class="panier"><a href="index.php?uc=panier"> Panier</a></div>
+                <?php 
+                if(isset($_SESSION['client'])){
+                    echo $_SESSION['client']->getNom();
+                }
+                ?>
+                <div class="panier"><a href="index.php?uc=panier&action=voirPanier"> Panier</a></div>
             </div>
 
         </div>

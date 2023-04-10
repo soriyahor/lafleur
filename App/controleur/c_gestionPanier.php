@@ -2,11 +2,14 @@
 include 'App/modele/M_article.php';
 /**
  * Controleur pour la gestion du panier
- * @author Loic LOG
+ * 
  */
+
+$lesArticlesDuPanier = [];
+
 switch ($action) {
     case 'supprimerUnArticle':
-        $idJeu = filter_input(INPUT_GET, 'article');
+        $idArticle = filter_input(INPUT_GET, 'article');
         retirerDuPanier($idArticle);
     case 'voirPanier':
         $n = nbArticlesDuPanier();
@@ -15,7 +18,7 @@ switch ($action) {
             $lesArticlesDuPanier = M_Article::trouveLesArticlesDuTableau($desIdArticle);
         } else {
             afficheMessage("Panier Vide !!");
-            $uc = '';
+            $uc = 'panier';
         }
         break;
 }

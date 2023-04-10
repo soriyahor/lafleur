@@ -49,6 +49,8 @@
                     <div>
                         <p><?= $nom ?></p>
                         <p><?= $prix . " €" ?></p>
+                        <label for="quantite">Quantité</label>
+                        <input type="number"min="0"max="">
                         <button class="ajouterPanier">Ajouter au panier</button>
                     </div>
 

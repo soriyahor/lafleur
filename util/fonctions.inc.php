@@ -30,13 +30,17 @@ function supprimerPanier() {
  * @param $idJeu : identifiant de jeu
  * @return vrai si le jeu n'était pas dans la variable, faux sinon 
  */
-function ajouterAuPanier($idArticle) {
-    $ok = false;
-    if (!in_array($idArticle, $_SESSION['articles'])) {
-        $_SESSION['jeux'][] = $idArticle;
-        $ok = true;
+function ajouterAuPanier($idArticle, int $quantite) {
+
+    if (!isset($_SESSION['articles'][$idArticle])) {
+        echo 'exist pas';
+        $_SESSION['articles'][$idArticle] = intval($quantite);
+    } else {
+        echo 'exist';
+        $val = $_SESSION['articles'][$idArticle];
+        $sum = intval($val) + intval($quantite);
+        $_SESSION['articles'][$idArticle] = $sum;
     }
-    return $ok;
 }
 
 /**
@@ -72,8 +76,8 @@ function nbArticlesDuPanier() {
  * @param $idProduit : identifiant de jeu
 
  */
-function retirerDuPanier($idProduit) {
-    $index = array_search($idProduit, $_SESSION['articles']);
+function retirerDuPanier($idArticle) {
+    $index = array_search($idArticle, $_SESSION['articles']);
     unset($_SESSION['articles'][$index]);
 }
 

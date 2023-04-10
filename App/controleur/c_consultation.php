@@ -38,9 +38,8 @@ switch ($action) {
     case 'ajouterAuPanier':
         $idArticle = filter_input(INPUT_GET, 'article');
         $categorie = filter_input(INPUT_GET, 'categorie');
-        if (!ajouterAuPanier($idArticle)) {
-            afficheErreurs(["Cet article est déjà dans le panier !!"]);
-        } else {
+        $quantite = filter_input(INPUT_GET, 'quantite');
+        if (ajouterAuPanier($idArticle, $quantite)) {
             afficheMessage("Cet article a été ajouté");
         }
         $lesArticles = M_Article::trouveLesArticles();
