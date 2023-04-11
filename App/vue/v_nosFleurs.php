@@ -12,7 +12,7 @@
         ?>
 
         <a href=index.php?uc=nosFleurs&conditionnement=lesbouquets&action=voirLesBouquets><button class="filtre">Bouquets</button></a><br>
-    
+
     </div>
 
     <div class="selectCouleurs">
@@ -39,23 +39,29 @@
         <div class="containGrid2">
             <?php
             foreach ($lesArticles as $unArticle) {
+                $idArticle = $unArticle['id'];
                 $nom = $unArticle['nom'];
                 $prix = $unArticle['prix'];
                 $photo = $unArticle['photo'];
                 $categorie = $unArticle['categorie_id1']
             ?>
-                <div>
-                    <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur">
+                <form method="get">
                     <div>
-                        <p><?= $nom ?></p>
-                        <p><?= $prix . " €" ?></p>
-                        <label for="quantite">Quantité</label>
-                        <input type="number"min="0"max="">
-                        <button class="ajouterPanier">Ajouter au panier</button>
+                        <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur">
+                        <div>
+                            <p><?= $nom ?></p>
+                            <p><?= $prix . " €" ?></p>
+                            <label for="quantite">Quantité</label>
+                            <input style="display: none" type="text" name="uc" value="accueil">
+                            <input style="display: none" type="text" name="categorie" value="<?= $categorie ?>">
+                            <input style="display: none" type="text" name="article" value="<?= $idArticle ?>">
+                            <input style="display: none" type="text" name="action" value="ajouterAuPanier">
+                            <input type="number" min="0" max="" name=quantite>
+                            <button class="ajouterPanier">Ajouter au panier</button>
+                        </div>
+
                     </div>
-
-                </div>
-
+                </form>
             <?php
             }
             ?>

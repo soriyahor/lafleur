@@ -18,7 +18,7 @@ class M_Article {
      * @return un tableau associatif
      */
     public static function trouveTousLesArticles() {
-        $req = "SELECT nom, prix, photo, categorie_id1 FROM article";
+        $req = "SELECT id, nom, prix, photo, categorie_id1 FROM article";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($req);
         $statement->execute();
@@ -28,7 +28,7 @@ class M_Article {
     }
 
     public static function trouveTousLesArticlesParCategorie($categorie) {
-        $req = "SELECT nom, prix, photo, categorie_id1 FROM article WHERE categorie_id1 = :categorie";
+        $req = "SELECT id, nom, prix, photo, categorie_id1 FROM article WHERE categorie_id1 = :categorie";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($req);
         $statement->bindParam('categorie', $categorie, PDO::PARAM_INT);
@@ -39,7 +39,7 @@ class M_Article {
     }
 
     public static function trouveTousLesArticlesParCouleur($couleur) {
-        $req = "SELECT art.nom, art.prix, art.photo, art.categorie_id1, couleur.nom AS nom_couleur FROM article AS art JOIN couleur ON art.couleur_id = couleur.id WHERE couleur.nom = :couleur";
+        $req = "SELECT art.id, art.nom, art.prix, art.photo, art.categorie_id1, couleur.nom AS nom_couleur FROM article AS art JOIN couleur ON art.couleur_id = couleur.id WHERE couleur.nom = :couleur";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($req);
         $statement->bindParam('couleur', $couleur, PDO::PARAM_STR);
@@ -61,7 +61,7 @@ class M_Article {
     }
 
     public static function trouveLesBouquets() {
-        $req = "SELECT art.nom, art.prix, art.photo, art.categorie_id1, conditionnement_id FROM article AS art WHERE conditionnement_id = 6";
+        $req = "SELECT art.id, art.nom, art.prix, art.photo, art.categorie_id1, conditionnement_id FROM article AS art WHERE conditionnement_id = 6";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($req);
         $statement->execute();

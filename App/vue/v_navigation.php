@@ -14,6 +14,7 @@
                     echo $_SESSION['client']->getNom();
                 }
                 ?>
+                <div><a href="index.php?uc=deconnexion&action=deconnexion"></a></div>
                 <div class="panier"><a href="index.php?uc=panier&action=voirPanier"> Panier</a></div>
             </div>
 

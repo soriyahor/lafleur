@@ -9,27 +9,29 @@
             <div class="selectionBouquet">
                 <?php
                 foreach ($lesBouquets as $unBouquet) {
-                    $id = $unBouquet['id'];
+                    $idBouquet = $unBouquet['id'];
                     $nom = $unBouquet['nom'];
                     $prix = $unBouquet['prix'];
                     $photo = $unBouquet['photo'];
                     $categorie = $unBouquet['categorie_id1'];
 
                 ?>
-                    <div>
-                        <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur" />
+                    <form method="GET">
                         <div>
-                            <p><?= $nom ?></p>
-                            <p><?= $prix . " €" ?></p>
-                            <label for="quantite">Quantite</label>
-                            <input type="number"min="0"max="">
-                            <a href="index.php?uc=accueil&categorie=<?= $categorie ?>&article=<?= $id ?>&quantite=2&action=ajouterAuPanier">
+                            <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur" />
+                            <div>
+                                <p><?= $nom ?></p>
+                                <p><?= $prix . " €" ?></p>
+                                <label for="quantite">Quantite</label>
+                                <input style="display: none" type="text" name="uc" value="accueil">
+                                <input style="display: none" type="text" name="categorie" value="<?= $categorie ?>">
+                                <input style="display: none" type="text" name="article" value="<?= $idBouquet ?>">
+                                <input style="display: none" type="text" name="action" value="ajouterAuPanier">
+                                <input type="number" min="0" max="" name=quantite>
                                 <button class="ajouterPanier">Ajouter au panier</button>
-                            </a>
+                            </div>
                         </div>
-
-                    </div>
-
+                    </form>
                 <?php
                 }
                 ?>
@@ -42,26 +44,31 @@
                 <div class="selectionBouquet">
                     <?php
                     foreach ($lesFleurs as $uneFleur) {
-                        $id = $unBouquet['id'];
+                        $idFleur = $uneFleur['id'];
                         $nom = $uneFleur['nom'];
                         $prix = $uneFleur['prix'];
                         $photo = $uneFleur['photo'];
                         $categorie = $uneFleur['categorie_id1'];
 
                     ?>
-                        <div>
-                            <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur" />
+                        <form method="get">
                             <div>
-                                <p><?= $nom ?></p>
-                                <p><?= $prix . " €" ?></p>
-                                <label for="quantite">Quantité</label>
-                                <input type="number"min="0"max="">
-                                <a href="index.php?uc=accueil&categorie=<?= $categorie ?>&article=<?= $id ?>&quantite=2&action=ajouterAuPanier">
+                                <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur" />
+                                <div>
+                                    <p><?= $nom ?></p>
+                                    <p><?= $prix . " €" ?></p>
+                                    <label for="quantite">Quantité</label>
+                                    <input style="display: none" type="text" name="uc" value="accueil">
+                                    <input style="display: none" type="text" name="categorie" value="<?= $categorie ?>">
+                                    <input style="display: none" type="text" name="article" value="<?= $idFleur ?>">
+                                    <input style="display: none" type="text" name="action" value="ajouterAuPanier">
+                                    <input type="number" min="0" max="" name=quantite>
                                     <button class="ajouterPanier">Ajouter au panier</button>
-                                </a>
-                            </div>
 
-                        </div>
+                                </div>
+
+                            </div>
+                        </form>
                     <?php
                     }
                     ?>

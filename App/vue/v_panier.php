@@ -3,7 +3,7 @@
 
     <?php
     foreach ($lesArticlesDuPanier as $unArticle) {
-        $id = $unArticle['id'];
+        $idPanier = $unArticle['id'];
         $nom = $unArticle['nom'];
         $photo = $unArticle['photo'];
         $prix = $unArticle['prix'];
@@ -16,7 +16,7 @@
             echo $quantite . " (quantite)";
             
             ?>	
-            <a href="index.php?uc=panier&Article=<?php echo $id ?>&action=supprimerUnArticle" onclick="return confirm('Voulez-vous vraiment retirer cet article ?');">
+            <a href="index.php?uc=panier&Article=<?php echo $idPanier ?>&action=supprimerUnArticle" onclick="return confirm('Voulez-vous vraiment retirer cet article ?');">
                 <img src="public/images/retirerpanier.png" TITLE="Retirer du panier" >
             </a>
         </p>
