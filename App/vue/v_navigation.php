@@ -4,27 +4,32 @@
 
         <div class="barrefixe">
             <div>00.00.00.00.00</div>
-            <?php 
-                var_dump($_SESSION);
-                ?>
+            <?php
+            var_dump($_SESSION);
+            ?>
             <div class="commerce">
                 <div><a href="index.php?uc=compte" class="lienCompte">Compte</a></div>
-                <?php 
-                if(isset($_SESSION['client'])){
+                <?php
+                if (isset($_SESSION['client'])) {
                     echo $_SESSION['client']->getNom();
                 }
                 ?>
-                <div><a href="index.php?uc=deconnexion&action=deconnexion"></a></div>
+                <?php
+                if (isset($_SESSION['client'])) {
+                ?> <div><a href="index.php?uc=deconnexion&action=deconnexion">Déconnexion</a></div>
+                <?php
+                }
+                ?>
                 <div class="panier"><a href="index.php?uc=panier&action=voirPanier"> Panier</a></div>
             </div>
 
         </div>
         <a href="index.php?uc=accueil">
-        <div class="logo">
-            
-            <img src="./public/images/lafleur.png" alt="logo_lafleur" class="imgLogo">
-            
-        </div>
+            <div class="logo">
+
+                <img src="./public/images/lafleur.png" alt="logo_lafleur" class="imgLogo">
+
+            </div>
         </a>
         <div class="containerNav">
             <div class="navbar">

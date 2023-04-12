@@ -77,8 +77,7 @@ function nbArticlesDuPanier() {
 
  */
 function retirerDuPanier($idArticle) {
-    $index = array_search($idArticle, $_SESSION['articles']);
-    unset($_SESSION['articles'][$index]);
+    unset($_SESSION['articles'][$idArticle]);
 }
 
 /**

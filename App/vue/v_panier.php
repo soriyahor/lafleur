@@ -3,20 +3,20 @@
 
     <?php
     foreach ($lesArticlesDuPanier as $unArticle) {
-        $idPanier = $unArticle['id'];
+        $idArticle = $unArticle['id'];
         $nom = $unArticle['nom'];
         $photo = $unArticle['photo'];
         $prix = $unArticle['prix'];
         $quantite = $unArticle['quantite'];
         ?>
         <p>
-        <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur" width=100 height=100>
+        <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur" width="70" height="70">
             <?php
             echo $nom . "($prix Euros)";
             echo $quantite . " (quantite)";
             
             ?>	
-            <a href="index.php?uc=panier&Article=<?php echo $idPanier ?>&action=supprimerUnArticle" onclick="return confirm('Voulez-vous vraiment retirer cet article ?');">
+            <a href="index.php?uc=panier&article=<?php echo $idArticle ?>&action=supprimerUnArticle" onclick="return confirm('Voulez-vous vraiment retirer cet article ?');">
                 <img src="public/images/retirerpanier.png" TITLE="Retirer du panier" >
             </a>
         </p>

@@ -4,7 +4,7 @@ include 'App/modele/M_commande.php';
 
 /**
  * Controleur pour les commandes
- * @author Loic LOG
+ * 
  */
 switch ($action) {
     case 'passerCommande':
@@ -23,7 +23,7 @@ switch ($action) {
         }
         break;
     case 'confirmerCommande':
-        $lesIdJeu = getLesIdArticlesDuPanier();
+        $lesIdArticle = getLesIdArticlesDuPanier();
         $errors = M_Commande::creerCommande($lesIdArticle);
         if (count($errors) > 0) {
             afficheErreurs($errors);

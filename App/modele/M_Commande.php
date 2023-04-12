@@ -31,7 +31,7 @@ class M_Commande
         
         $idClient = $_SESSION['client']->getId();
         // var_dump($_SESSION);
-        $reqCommande = "insert into commandes(id_clients) values (:idClient)";
+        $reqCommande = "insert into commande_clt(client_id) values (:idClient)";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($reqCommande);
         $statement->bindParam(':idClient', $idClient, PDO::PARAM_INT);
@@ -43,7 +43,7 @@ class M_Commande
         $idCommande = AccesDonnees::getPdo()->lastInsertId();
 
         foreach ($listArticles as $article) {
-            $reqArticle = "SELECT * from exemplaires where id = :jeu";
+            $reqArticle = "SELECT * from article where id = :article";
             $pdo=AccesDonnees::getPdo();
             $statement=$pdo->prepare($reqArticle);
             $statement->bindParam(':article',$article, PDO::PARAM_INT);
@@ -51,7 +51,7 @@ class M_Commande
             $articleBDD = $statement->fetch(PDO::FETCH_ASSOC);
             $prix = $articleBDD['prix'];
 
-            $req = "insert into lignes_commande(commande_id, exemplaire_id, prix, quantite) values ('$idCommande','$article', '$prix', 1)";
+            $req = "insert into ligne_commande_clt(article_id, commande_clt_id, quantite, prix) values ('$idCommande','$article','quantite' '$prix')";
             AccesDonnees::exec($req);
         }
         return $erreurs;

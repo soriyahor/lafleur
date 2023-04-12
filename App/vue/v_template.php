@@ -33,6 +33,9 @@
         case 'contact':
             include 'v_contact.php';
             break;
+        case 'commander':
+            include 'v_commande.php';
+            break;
         case 'compte':
             include 'v_compte.php';
             break;
