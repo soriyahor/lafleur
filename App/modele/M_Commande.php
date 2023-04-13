@@ -7,6 +7,48 @@
 class M_Commande
 {
 
+
+
+public static function creerLivraison($idClient, $prixLivraison){
+
+    $reqLivraison = "SELECT numero, rue, complement, cp, nom 
+        FROM adresse_client 
+        JOIN adresse ON adresse_client.adresse_id = adresse.id 
+        JOIN ville ON adresse.ville_id = ville.id 
+        JOIN codepostal ON adresse.codePostal_id = codepostal.id
+        WHERE client_id= :idClient";
+        $pdo = AccesDonnees::getPdo();
+        $statement = $pdo->prepare($reqLivraison);
+        $statement->bindParam(':idClient', $idClient, PDO::PARAM_INT);
+        $statement->execute();
+        $resLivraison = $statement->fetch(PDO::FETCH_ASSOC);
+
+        $dateActuelle = date('Y-m-d', strtotime('+2 days'));
+        $numRue = $resLivraison['numero'];
+        $rue = $resLivraison['rue'];
+        $complement = $resLivraison['complement'];
+        $code_postal = $resLivraison['cp'];
+        $ville = $resLivraison['nom'];
+
+        $reqRajoutLivraison = "INSERT INTO livraison (date_livraison, etat_livraison, numero_rue, rue, complement, code_postal, ville, prix)
+         values (:dateActuelle,'en cours de livraison', :numRue, :rue, :complement, :code_postal, :ville, :prixLivraison)";
+        $pdo = AccesDonnees::getPdo();
+        $statement = $pdo->prepare($reqRajoutLivraison);
+        $statement->bindParam(':dateActuelle', $dateActuelle, PDO::PARAM_STR);
+        $statement->bindParam(':numRue', $numRue, PDO::PARAM_INT);
+        $statement->bindParam(':rue', $rue, PDO::PARAM_STR);
+        $statement->bindParam(':complement', $complement, PDO::PARAM_STR);
+        $statement->bindParam(':code_postal', $code_postal, PDO::PARAM_INT);
+        $statement->bindParam(':ville', $ville, PDO::PARAM_STR);
+        $statement->bindParam(':prixLivraison', $prixLivraison, PDO::PARAM_STR);
+        $statement->execute();
+        
+        $idLivraison = AccesDonnees::getPdo()->lastInsertId();
+
+return $idLivraison;
+}
+
+
     /**
      * Crée une commande
      *
@@ -24,34 +66,56 @@ class M_Commande
     public static function creerCommande($listArticles)
     {
         $erreurs = [];
-        if(!isset($_SESSION['client'])){
+        if (!isset($_SESSION['client'])) {
             $erreurs[] = "Connectez-vous !";
             return $erreurs;
         }
-        
         $idClient = $_SESSION['client']->getId();
-        // var_dump($_SESSION);
-        $reqCommande = "insert into commande_clt(client_id) values (:idClient)";
-        $pdo=AccesDonnees::getPdo();
-        $statement=$pdo->prepare($reqCommande);
-        $statement->bindParam(':idClient', $idClient, PDO::PARAM_INT);
-        $statement->execute();
-        $resCommande = $statement->fetch(PDO::FETCH_ASSOC);
 
-
-        // AccesDonnees::exec($reqCommande);
-        $idCommande = AccesDonnees::getPdo()->lastInsertId();
-
-        foreach ($listArticles as $article) {
+        $somme = 0;
+        foreach ($_SESSION['articles'] as $idArticle => $quantite) {
             $reqArticle = "SELECT * from article where id = :article";
-            $pdo=AccesDonnees::getPdo();
-            $statement=$pdo->prepare($reqArticle);
-            $statement->bindParam(':article',$article, PDO::PARAM_INT);
+            $pdo = AccesDonnees::getPdo();
+            $statement = $pdo->prepare($reqArticle);
+            $statement->bindParam(':article', $idArticle, PDO::PARAM_INT);
             $statement->execute();
             $articleBDD = $statement->fetch(PDO::FETCH_ASSOC);
             $prix = $articleBDD['prix'];
 
-            $req = "insert into ligne_commande_clt(article_id, commande_clt_id, quantite, prix) values ('$idCommande','$article','quantite' '$prix')";
+            $somme += $prix*intval($quantite);
+
+        }
+        
+        $prixLivraison = 0;
+        if($somme<50){
+            $prixLivraison = 2.99;
+        }
+        $idLivraison = M_Commande::creerLivraison($idClient, $prixLivraison);
+
+        
+        // var_dump($_SESSION);
+        $reqCommande = "insert into commande_clt(client_id, livraison_id) values (:idClient, :idLivraison)";
+        $pdo = AccesDonnees::getPdo();
+        $statement = $pdo->prepare($reqCommande);
+        $statement->bindParam(':idClient', $idClient, PDO::PARAM_INT);
+        $statement->bindParam(':idLivraison', $idLivraison, PDO::PARAM_INT);
+        $statement->execute();
+        $resCommande = $statement->fetch(PDO::FETCH_ASSOC);
+
+        // AccesDonnees::exec($reqCommande);
+        $idCommande = AccesDonnees::getPdo()->lastInsertId();
+
+        foreach ($_SESSION['articles'] as $idArticle => $quantite) {
+            $reqArticle = "SELECT * from article where id = :article";
+            $pdo = AccesDonnees::getPdo();
+            $statement = $pdo->prepare($reqArticle);
+            $statement->bindParam(':article', $idArticle, PDO::PARAM_INT);
+            $statement->execute();
+            $articleBDD = $statement->fetch(PDO::FETCH_ASSOC);
+            $prix = $articleBDD['prix'];
+
+
+            $req = "insert into ligne_commande_clt(article_id, commande_clt_id, quantite, prix) values ('$idArticle', '$idCommande','$quantite' '$prix')";
             AccesDonnees::exec($req);
         }
         return $erreurs;
@@ -85,9 +149,9 @@ class M_Commande
         where id_clients = :idClient
         order by id desc";
         $idClient = $_SESSION['client']->getId();
-        $pdo=AccesDonnees::getPdo();
-        $statement=$pdo->prepare($reqCommande);
-        $statement->bindParam(':idClient',$idClient, PDO::PARAM_INT);
+        $pdo = AccesDonnees::getPdo();
+        $statement = $pdo->prepare($reqCommande);
+        $statement->bindParam(':idClient', $idClient, PDO::PARAM_INT);
         $statement->execute();
         $resCommande = $statement->fetchAll(PDO::FETCH_ASSOC);
         // var_dump($resCommande);
