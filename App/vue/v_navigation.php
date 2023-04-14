@@ -8,6 +8,7 @@
             var_dump($_SESSION);
             ?>
             <div class="commerce">
+                <div><a href="index.php?uc=commandes&action=historique"> Voir mes commandes </a></div>
                 <div><a href="index.php?uc=compte" class="lienCompte">Compte</a></div>
                 <?php
                 if (isset($_SESSION['client'])) {

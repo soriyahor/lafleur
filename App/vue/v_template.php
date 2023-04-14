@@ -42,6 +42,9 @@
         case 'panier':
             include 'v_panier.php';
             break;
+        case 'commandes':
+            include 'v_commandes.php';
+            break;
         case '':
             include 'v_accueil.php';
             break;

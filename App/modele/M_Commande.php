@@ -11,7 +11,7 @@ class M_Commande
 
 public static function creerLivraison($idClient, $prixLivraison){
 
-    $reqLivraison = "SELECT numero, rue, complement, cp, nom 
+    $reqLivraison = "SELECT numero, rue, complement, cp, nom, livrable
         FROM adresse_client 
         JOIN adresse ON adresse_client.adresse_id = adresse.id 
         JOIN ville ON adresse.ville_id = ville.id 
@@ -22,6 +22,12 @@ public static function creerLivraison($idClient, $prixLivraison){
         $statement->bindParam(':idClient', $idClient, PDO::PARAM_INT);
         $statement->execute();
         $resLivraison = $statement->fetch(PDO::FETCH_ASSOC);
+
+        $livrable = $resLivraison['livrable'];
+        
+        if($livrable == 0){
+            return -1;
+        }
 
         $dateActuelle = date('Y-m-d', strtotime('+2 days'));
         $numRue = $resLivraison['numero'];
@@ -92,7 +98,11 @@ return $idLivraison;
         }
         $idLivraison = M_Commande::creerLivraison($idClient, $prixLivraison);
 
-        
+
+        if($idLivraison == -1 ){
+            $erreurs[] = "Nous sommes désolé, nous ne déservons pas votre ville !";
+            return $erreurs;
+        }
         // var_dump($_SESSION);
         $reqCommande = "insert into commande_clt(client_id, livraison_id) values (:idClient, :idLivraison)";
         $pdo = AccesDonnees::getPdo();
@@ -128,26 +138,17 @@ return $idLivraison;
     public static function voirCommandes()
     {
 
-        $reqCommande = "select co.id, co.created_at, co.id_clients,
-        lc.quantite, lc.prix,
-        etat.statut,
-        jeu.nom as nom_jeu, jeu.description, jeu.version,
-        console.nom as nom_console, ca.nom as cat
-        from commandes as co
-        join lignes_commande as lc
-        on co.id = lc.commande_id
-        join exemplaires as ex
-        on lc.exemplaire_id = ex.id
-        join jeu
-        on ex.id_jeu = jeu.id
-        join etat
-        on etat.id = ex.id_etat
-        join console
-        on jeu.id_console = console.id
-        join categories as ca
-        on ca.id = jeu.id_categories
-        where id_clients = :idClient
-        order by id desc";
+        $reqCommande = "SELECT commande_clt.id AS id_commande, commande_clt.date_commande, commande_clt.client_id, 
+         lc.quantite, lc.prix, article.nom AS article, couleur.nom AS couleur
+        FROM commande_clt 
+        JOIN ligne_commande_clt AS lc ON lc.commande_clt_id = commande_clt.id 
+        JOIN livraison ON commande_clt.livraison_id = livraison.id
+        JOIN article ON lc.article_id = article.id join conditionnement on article.conditionnement_id= conditionnement.id 
+        JOIN couleur on couleur.id = article.couleur_id 
+        JOIN categorie ON article.categorie_id1 = categorie.id
+        WHERE client_id=:idClient
+        ORDER BY id_commande DESC";
+       
         $idClient = $_SESSION['client']->getId();
         $pdo = AccesDonnees::getPdo();
         $statement = $pdo->prepare($reqCommande);
