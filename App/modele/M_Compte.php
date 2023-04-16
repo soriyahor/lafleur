@@ -23,15 +23,41 @@ class M_Compte
 
         //chercher dans bdd les ids la ville par le nom et le codepostal
 
-        
+        $reqVilleExistant = "SELECT * FROM ville WHERE nom =:nomVille";
+        $pdo = AccesDonnees::getPdo();
+        $stmt = $pdo->prepare($reqVilleExistant);
+        $stmt->bindParam(":nomVille", $ville, PDO::PARAM_STR);
+        $stmt->execute();
+        // Exécution
+        $resVilleExistant = $stmt->fetch();
 
-        $reqVille = "insert into ville(nom) values ('$ville')";
-        $resVille = AccesDonnees::exec($reqVille);
-        $idVille = AccesDonnees::getPdo()->lastInsertId();
+        $reqCpExistant = "SELECT * FROM codePostal WHERE cp=:cp";
+        $pdo = AccesDonnees::getPdo();
+        $stmt = $pdo->prepare($reqCpExistant);
+        $stmt->bindParam(":cp", $cp, PDO::PARAM_INT);
+        $stmt->execute();
+        // Exécution
+        $resCpExistant = $stmt->fetch();
 
-        $reqCp = "insert into codePostal(cp) values ('$cp')";
+        if(isset($resVilleExistant['id'])){
+            var_dump($resVilleExistant['id']);
+            $idVille = $resVilleExistant['id'];
+        } else {
+            $reqVille = "insert into ville(nom) values ('$ville')";
+            $resVille = AccesDonnees::exec($reqVille);
+            $idVille = AccesDonnees::getPdo()->lastInsertId();
+    
+        }
+
+        if(isset($resCpExistant['id'])){
+            var_dump($resCpExistant['id']);
+            $idCp = $resCpExistant['id'];
+        } else {
+            $reqCp = "insert into codePostal(cp) values ('$cp')";
         $resCp = AccesDonnees::exec($reqCp);
         $idCp = AccesDonnees::getPdo()->lastInsertId();
+        }
+        
 
         $reqAdresse = "insert into adresse(numero, rue, codePostal_id, ville_id) values ('$numRue', '$rue', '$idCp', '$idVille')";
         $resAdresse = AccesDonnees::exec($reqAdresse);
