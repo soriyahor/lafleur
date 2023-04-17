@@ -5,7 +5,6 @@
         <div class="barrefixe">
             <div>00.00.00.00.00</div>
             <?php
-            var_dump($_SESSION);
             ?>
             <div class="commerce">
                 <div><a href="index.php?uc=commandes&action=historique"> Voir mes commandes </a></div>

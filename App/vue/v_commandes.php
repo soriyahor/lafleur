@@ -11,7 +11,6 @@
 
 
     <?php
-    var_dump($commandes);
 
     foreach ($commandes as $key => $value) {
         echo "<tr>";

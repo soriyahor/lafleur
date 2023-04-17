@@ -40,7 +40,7 @@ class M_Compte
         $resCpExistant = $stmt->fetch();
 
         if(isset($resVilleExistant['id'])){
-            var_dump($resVilleExistant['id']);
+
             $idVille = $resVilleExistant['id'];
         } else {
             $reqVille = "insert into ville(nom) values ('$ville')";
@@ -50,7 +50,6 @@ class M_Compte
         }
 
         if(isset($resCpExistant['id'])){
-            var_dump($resCpExistant['id']);
             $idCp = $resCpExistant['id'];
         } else {
             $reqCp = "insert into codePostal(cp) values ('$cp')";

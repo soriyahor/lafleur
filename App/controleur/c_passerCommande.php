@@ -8,6 +8,7 @@ include 'App/modele/M_commande.php';
  */
 switch ($action) {
     case 'passerCommande':
+        $dateLivraison = filter_input(INPUT_GET, 'dateLivraison');
         $n = nbArticlesDuPanier();
         if ($n > 0) {
             $nom = '';
@@ -21,10 +22,9 @@ switch ($action) {
             afficheMessage("Panier vide !!");
             $uc = '';
         }
-        break;
-    case 'confirmerCommande':
+
         $lesIdArticle = getLesIdArticlesDuPanier();
-        $errors = M_Commande::creerCommande($lesIdArticle);
+        $errors = M_Commande::creerCommande($lesIdArticle, $dateLivraison);
         if (count($errors) > 0) {
             afficheErreurs($errors);
         } else {

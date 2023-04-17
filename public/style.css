@@ -72,7 +72,8 @@
 .quiSommesNous,
 .titreQui,
 .selection,
-.titreFleurs{
+.titreFleurs,
+.Panier{
     display: flex;
     justify-content: center;
     margin-bottom: 1vw;
@@ -204,7 +205,7 @@ button{
     display: flex;
   }
   .ensFiltre{
-    gap: 5vw;
+    gap: 3.2vw;
   }
   .selectCouleurs{
     gap:2vw;
@@ -212,5 +213,12 @@ button{
   }
 .cache{
     display: none;
+}
+
+input{
+    width: 3vw;
+}
+.containPanier{
+    margin-left: 4.5vw;
 }
   

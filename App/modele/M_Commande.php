@@ -9,7 +9,7 @@ class M_Commande
 
 
 
-public static function creerLivraison($idClient, $prixLivraison){
+public static function creerLivraison($idClient, $prixLivraison, $dateLivraison){
 
     $reqLivraison = "SELECT numero, rue, complement, cp, nom, livrable
         FROM adresse_client 
@@ -29,7 +29,7 @@ public static function creerLivraison($idClient, $prixLivraison){
             return -1;
         }
 
-        $dateActuelle = date('Y-m-d', strtotime('+2 days'));
+        $dateActuelle = date('Y-m-d', strtotime('+'.$dateLivraison.' days'));
         $numRue = $resLivraison['numero'];
         $rue = $resLivraison['rue'];
         $complement = $resLivraison['complement'];
@@ -69,7 +69,7 @@ return $idLivraison;
      * @param $listJeux
 
      */
-    public static function creerCommande($listArticles)
+    public static function creerCommande($listArticles, $dateLivraison)
     {
         $erreurs = [];
         if (!isset($_SESSION['client'])) {
@@ -96,7 +96,7 @@ return $idLivraison;
         if($somme<50){
             $prixLivraison = 2.99;
         }
-        $idLivraison = M_Commande::creerLivraison($idClient, $prixLivraison);
+        $idLivraison = M_Commande::creerLivraison($idClient, $prixLivraison, $dateLivraison);
 
 
         if($idLivraison == -1 ){
