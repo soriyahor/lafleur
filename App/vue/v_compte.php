@@ -19,7 +19,7 @@
 <div class="cadreCompte">
     <div class="titreCompte">Je crée un compte</div>
     <form method="POST" action="index.php?uc=inscrire&action=inscription">
-    <div class="connexion">
+    <div class="inscription">
         <label for="nom">Nom*</label><br>
         <input id="nom" type="text" name="nom" size="30" maxlength="45"><br>
         <label for="prenom">Prénom*</label>

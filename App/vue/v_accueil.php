@@ -27,7 +27,7 @@
                                 <input style="display: none" type="text" name="categorie" value="<?= $categorie ?>">
                                 <input style="display: none" type="text" name="article" value="<?= $idBouquet ?>">
                                 <input style="display: none" type="text" name="action" value="ajouterAuPanier">
-                                <input type="number" min="0" max="" name=quantite>
+                                <input type="number" min="0" max="" name=quantite class="inputQuantite">
                                 <button class="ajouterPanier">Ajouter au panier</button>
                             </div>
                         </div>

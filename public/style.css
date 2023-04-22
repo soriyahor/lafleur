@@ -98,6 +98,12 @@
     height: 15vw;
     width: 22vw;
 }
+.inscription{
+    padding: 2vw 0 0 3vw;
+    border: 1px solid black;
+    height: 30vw;
+    width: 22vw;
+}
 .boutonCompte{
     background-color: var(--violet);
     color: white;
@@ -215,10 +221,60 @@ button{
     display: none;
 }
 
-input{
+.inputQuantite{
     width: 3vw;
 }
 .containPanier{
     margin-left: 4.5vw;
+}
+
+
+
+.jeu {
+	text-align:center;
+}
+.containerRoulette {
+	margin:0 auto;
+	width:266px;
+}
+.jeuRoulette {
+	 border: 1px solid #000000;
+}
+.roulette {
+	background:url("../public/images/casino_normal.png") repeat-y; 
+	width:88px;
+	height:70px;
+	float:left;
+	border:1px solid #000;
+	background-position:0 4px;
+}
+
+.blur {
+    background:url("../public/images/casino_blur.png") repeat-y; 
+    width:88px;
+    height:70px;
+    float:left;
+    border:1px solid #000;
+    background-position:0 4px;
+    filter: blur(3px);
+}
+
+#start {
+	display:block;
+	width:138px;
+	height:33px;
+	margin:20px 60px;
+	font-size:16px;
+	cursor:pointer;
+}
+#result {
+	margin:20px 0;
+	font-size:18px;
+	font-weight:bold;
+	height:22px;
+}
+
+.reset {
+	clear:both;
 }
   

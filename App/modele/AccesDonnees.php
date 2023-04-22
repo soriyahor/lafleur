@@ -35,7 +35,7 @@ class AccesDonnees {
      */
     public static function getPdo() {
         if (AccesDonnees::$monPdo == null) {
-            AccesDonnees::$monPdo = new PDO(AccesDonnees::$serveur . ';' . AccesDonnees::$bdd, AccesDonnees::$user, AccesDonnees::$mdp);
+            AccesDonnees::$monPdo = new PDO(AccesDonnees::$serveur . ';' . AccesDonnees::$bdd, AccesDonnees::$user, AccesDonnees::$mdp, array(PDO::ATTR_PERSISTENT => true));
             AccesDonnees::$monPdo->query("SET CHARACTER SET utf8");
         }
         return AccesDonnees::$monPdo;
