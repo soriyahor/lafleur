@@ -61,8 +61,8 @@
                                     <input style="display: none" type="text" name="uc" value="accueil">
                                     <input style="display: none" type="text" name="categorie" value="<?= $categorie ?>">
                                     <input style="display: none" type="text" name="article" value="<?= $idFleur ?>">
-                                    <input style="display: none" type="text" name="action" value="ajouterAuPanier">
-                                    <input type="number" min="0" max="" name=quantite>
+                                    <input style="display: none" type="text" name="action" value="ajouterAuPanier" >
+                                    <input type="number" min="0" max="" name="quantite" class="inputQuantite">
                                     <button class="ajouterPanier">Ajouter au panier</button>
 
                                 </div>

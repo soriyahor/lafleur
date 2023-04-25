@@ -18,7 +18,7 @@ function initPanier() {
  * Supprime la variable de type session 
  */
 function supprimerPanier() {
-    unset($_SESSION['article']);
+    unset($_SESSION['articles']);
 }
 
 /**
@@ -31,16 +31,16 @@ function supprimerPanier() {
  * @return vrai si le jeu n'était pas dans la variable, faux sinon 
  */
 function ajouterAuPanier($idArticle, int $quantite) {
-
+    afficheMessage("Cet article a été ajouté");
     if (!isset($_SESSION['articles'][$idArticle])) {
-        echo 'exist pas';
         $_SESSION['articles'][$idArticle] = intval($quantite);
     } else {
-        echo 'exist';
         $val = $_SESSION['articles'][$idArticle];
         $sum = intval($val) + intval($quantite);
         $_SESSION['articles'][$idArticle] = $sum;
     }
+    
+    
 }
 
 /**

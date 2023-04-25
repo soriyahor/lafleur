@@ -138,6 +138,12 @@ class M_Commande
 
                 $req = "insert into ligne_commande_clt(article_id, commande_clt_id, quantite, prix) values ('$idArticle', '$idCommande','$quantite', '$prix')";
                 AccesDonnees::exec($req);
+                
+                 $quantiteBDD = $articleBDD['quantite_stock'] - $quantite;
+
+                if($quantiteBDD >= 0){
+                    
+                }
             }
 
             $pdo->commit();

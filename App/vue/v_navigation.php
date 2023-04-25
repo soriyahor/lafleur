@@ -7,8 +7,13 @@
             <?php
             ?>
             <div class="commerce">
-                <div><a href="index.php?uc=commandes&action=historique"> Voir mes commandes </a></div>
-                <div><a href="index.php?uc=compte" class="lienCompte">Compte</a></div>
+            <?php
+                if (isset($_SESSION['client'])) {
+                ?><div class="voirCommande"><a href="index.php?uc=commandes&action=historique"> Voir mes commandes </a></div>
+                <?php
+                }
+                ?>
+                <div class="lienCompte"><a href="index.php?uc=compte">Compte</a></div>
                 <?php
                 if (isset($_SESSION['client'])) {
                     echo $_SESSION['client']->getNom();
@@ -16,7 +21,7 @@
                 ?>
                 <?php
                 if (isset($_SESSION['client'])) {
-                ?> <div><a href="index.php?uc=deconnexion&action=deconnexion">Déconnexion</a></div>
+                ?> <div class="deconnexion"><a href="index.php?uc=deconnexion&action=deconnexion">Déconnexion</a></div>
                 <?php
                 }
                 ?>

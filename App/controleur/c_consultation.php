@@ -39,10 +39,15 @@ switch ($action) {
         $idArticle = filter_input(INPUT_GET, 'article');
         $categorie = filter_input(INPUT_GET, 'categorie');
         $quantite = filter_input(INPUT_GET, 'quantite');
-        if (ajouterAuPanier($idArticle, $quantite)) {
-            afficheMessage("Cet article a été ajouté");
-        }
-        $lesArticles = M_Article::trouveLesArticles();
+        ajouterAuPanier($idArticle, $quantite);
+            //chercher l'url courant
+             //header('Location: index.php?uc=accueil');
+            $previous_page = $_SERVER['HTTP_REFERER'];
+            $path_parts = pathinfo($previous_page);
+            $result = $path_parts['basename']; 
+            header('Location: '.$result);
+        
+        // $lesArticles = M_Article::trouveLesArticles();
         // $lesJeux = M_Exemplaire::trouveLesJeuxDeCategorie($categorie);
         break;
     default:

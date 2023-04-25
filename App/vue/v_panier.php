@@ -18,7 +18,7 @@
             
             ?>	
             <a href="index.php?uc=panier&article=<?php echo $idArticle ?>&action=supprimerUnArticle" onclick="return confirm('Voulez-vous vraiment retirer cet article ?');">
-                <img src="public/images/retirerpanier.png" TITLE="Retirer du panier" >
+                Retirer du panier
             </a>
         </p>
         <?php
@@ -31,7 +31,7 @@
         <input style="display: none" type="text" name="uc" value="commander">
         <input style="display: none" type="text" name="action" value="passerCommande">
         <br>
-        <button onclick="return confirm('Confirmez-vous votre commade ?');">Passer commande</button>
+        <button onclick="return confirm('Confirmez-vous votre commande ?');">Passer commande</button>
     <!-- <a href=index.php?uc=commander&action=passerCommande class="passerCommande">
         <img src="public/images/commander.jpg" title="Passer commande" >
     </a> -->
