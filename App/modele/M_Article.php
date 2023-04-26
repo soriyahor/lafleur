@@ -18,7 +18,7 @@ class M_Article {
      * @return un tableau associatif
      */
     public static function trouveTousLesArticles() {
-        $req = "SELECT id, nom, prix, photo, categorie_id1 FROM article";
+        $req = "SELECT id, nom, prix, quantite_stock, photo, categorie_id1 FROM article";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($req);
         $statement->execute();
@@ -111,7 +111,7 @@ class M_Article {
         if ($nbArticles != 0) {
             foreach ($desIdArticles as $unIdArticle => $quantite) {
                 
-                $req = "SELECT id, nom, prix, photo, categorie_id1 FROM article WHERE id = :unIdArticle";
+                $req = "SELECT id, nom, prix, quantite_stock, photo, categorie_id1 FROM article WHERE id = :unIdArticle";
                 $pdo=AccesDonnees::getPdo();
                 $statement=$pdo->prepare($req);
                 $statement->bindParam('unIdArticle', $unIdArticle, PDO::PARAM_INT);

@@ -43,7 +43,8 @@
                 $nom = $unArticle['nom'];
                 $prix = $unArticle['prix'];
                 $photo = $unArticle['photo'];
-                $categorie = $unArticle['categorie_id1']
+                $categorie = $unArticle['categorie_id1'];
+                $quantite_stock = $unArticle['quantite_stock'];
             ?>
                 <form method="get">
                     <div>
@@ -51,6 +52,8 @@
                         <div>
                             <p><?= $nom ?></p>
                             <p><?= $prix . " €" ?></p>
+                            <?php
+                            if($quantite_stock>0){ ?>
                             <label for="quantite">Quantité</label>
                             <input style="display: none" type="text" name="uc" value="accueil">
                             <input style="display: none" type="text" name="categorie" value="<?= $categorie ?>">
@@ -58,6 +61,13 @@
                             <input style="display: none" type="text" name="action" value="ajouterAuPanier">
                             <input type="number" min="0" max="" name=quantite class="inputQuantite">
                             <button class="ajouterPanier">Ajouter au panier</button>
+                            <?php
+                        }else{
+                            ?>
+                            <div class="rupture">En rupture de stock</div>
+                        <?php 
+                        }
+                        ?>
                         </div>
 
                     </div>

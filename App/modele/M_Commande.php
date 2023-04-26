@@ -138,18 +138,25 @@ class M_Commande
 
                 $req = "insert into ligne_commande_clt(article_id, commande_clt_id, quantite, prix) values ('$idArticle', '$idCommande','$quantite', '$prix')";
                 AccesDonnees::exec($req);
-                
                  $quantiteBDD = $articleBDD['quantite_stock'] - $quantite;
-
+                
                 if($quantiteBDD >= 0){
-                    
+
+                $req = "UPDATE article SET quantite_stock= :quantite WHERE id= :idArticle"; 
+                $statement = $pdo->prepare($reqArticle);
+                $statement->bindParam(':quantite', $quantiteBDD, PDO::PARAM_INT);
+                $statement->bindParam(':idArticle', $idArticle, PDO::PARAM_INT);
+                $statement->execute();
+                
+                }else {
+                    throw new Exception("L'article ".$articleBDD['nom']." est en rupture de stock.");
                 }
             }
 
             $pdo->commit();
         } catch (Exception $e) {
             $pdo->rollBack();
-            $erreurs[] = "Une erreur est survenue.";
+            $erreurs[] = "Une erreur est survenue." .$e->getMessage();
         }
 
 
