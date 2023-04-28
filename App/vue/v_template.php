@@ -17,7 +17,11 @@
     if (!isset($uc)) {
         include 'v_accueil.php';
     }
+
     switch ($uc) {
+        case 'json':
+             //renvoi pas de page pour de l'ajax
+            break;
         case 'accueil':
             include 'v_accueil.php';
             break;
@@ -42,6 +46,9 @@
         case 'commandes':
             include 'v_commandes.php';
             break;
+        case 'jeuCasino':
+            include 'v_jeuCasino.php';
+            break;
         case '':
             include 'v_accueil.php';
             break;
@@ -50,8 +57,7 @@
     include 'v_footer.php';
 
     ?>
-
-    <script src="./js/main.js"></script>
+    <script src="./public/main.js"></script>
 </body>
 
 </html>

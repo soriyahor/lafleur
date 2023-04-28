@@ -13,6 +13,7 @@ session_start();
 
 $uc = filter_input(INPUT_GET, 'uc'); // Use Case
 $action = filter_input(INPUT_GET, 'action'); // Action
+$json = filter_input(INPUT_GET, 'json'); // mode APi json
 initPanier();
 
 if (!$uc) {
@@ -53,5 +54,9 @@ switch ($uc) {
         break;
 }
 
+if(!isset($json)){
+    include("App/vue/v_template.php");
+}else {
+    header("Content-Type: application/json");
+}
 
-include("App/vue/v_template.php");

@@ -28,8 +28,8 @@
     <form method="get">
         <label for="dateLivraison">Dans combien de jours, voulez-vous être livré ? </label>
         <input type="number" min="1" max="" value ="1" name=dateLivraison>
-        <input style="display: none" type="text" name="uc" value="commander">
-        <input style="display: none" type="text" name="action" value="passerCommande">
+        <input style="display: none" type="text" name="uc" value="jeuCasino">
+        <input style="display: none" type="text" name="action" value="jeuCasino">
         <br>
         <button onclick="return confirm('Confirmez-vous votre commande ?');">Passer commande</button>
     <!-- <a href=index.php?uc=commander&action=passerCommande class="passerCommande">

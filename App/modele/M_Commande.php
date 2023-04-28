@@ -70,7 +70,7 @@ class M_Commande
      * @param $listJeux
 
      */
-    public static function creerCommande($listArticles, $dateLivraison)
+    public static function creerCommande($listArticles, $dateLivraison, $idLoterie)
     {
         try {
             $pdo = AccesDonnees::getPdo();
@@ -108,13 +108,11 @@ class M_Commande
                 return $erreurs;
             }
             // var_dump($_SESSION);
-            $idLoterie = 1;
 
-            $reqLoterie = "SELECT * FROM loterie WHERE id=:idLoterie";
-            $statement = $pdo->prepare($reqLoterie);
+            $req = "UPDATE loterie SET quantite_restant = quantite_restant - 1 WHERE id= :idLoterie";
+            $statement = $pdo->prepare($req);
             $statement->bindParam(':idLoterie', $idLoterie, PDO::PARAM_INT);
             $statement->execute();
-            $resLoterie = $statement->fetch(PDO::FETCH_ASSOC);
 
             $reqCommande = "insert into commande_clt(client_id, livraison_id, loterie_id) values (:idClient, :idLivraison, :idLoterie)";
             $statement = $pdo->prepare($reqCommande);
@@ -138,25 +136,24 @@ class M_Commande
 
                 $req = "insert into ligne_commande_clt(article_id, commande_clt_id, quantite, prix) values ('$idArticle', '$idCommande','$quantite', '$prix')";
                 AccesDonnees::exec($req);
-                 $quantiteBDD = $articleBDD['quantite_stock'] - $quantite;
-                
-                if($quantiteBDD >= 0){
+                $quantiteBDD = $articleBDD['quantite_stock'] - $quantite;
 
-                $req = "UPDATE article SET quantite_stock= :quantite WHERE id= :idArticle"; 
-                $statement = $pdo->prepare($reqArticle);
-                $statement->bindParam(':quantite', $quantiteBDD, PDO::PARAM_INT);
-                $statement->bindParam(':idArticle', $idArticle, PDO::PARAM_INT);
-                $statement->execute();
-                
-                }else {
-                    throw new Exception("L'article ".$articleBDD['nom']." est en rupture de stock.");
+                if ($quantiteBDD >= 0) {
+
+                    $req = "UPDATE article SET quantite_stock= :quantite WHERE id= :idArticle";
+                    $statement = $pdo->prepare($req);
+                    $statement->bindParam(':quantite', $quantiteBDD, PDO::PARAM_INT);
+                    $statement->bindParam(':idArticle', $idArticle, PDO::PARAM_INT);
+                    $statement->execute();
+                } else {
+                    throw new Exception("L'article " . $articleBDD['nom'] . " est en rupture de stock.");
                 }
             }
 
             $pdo->commit();
         } catch (Exception $e) {
             $pdo->rollBack();
-            $erreurs[] = "Une erreur est survenue." .$e->getMessage();
+            $erreurs[] = "Une erreur est survenue." . $e->getMessage();
         }
 
 
