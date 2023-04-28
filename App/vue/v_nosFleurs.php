@@ -45,6 +45,7 @@
                 $photo = $unArticle['photo'];
                 $categorie = $unArticle['categorie_id1'];
                 $quantite_stock = $unArticle['quantite_stock'];
+                $conditionnement = $unArticle['typeConditionnement'];
             ?>
                 <form method="get">
                     <div>
@@ -52,6 +53,7 @@
                         <div>
                             <p><?= $nom ?></p>
                             <p><?= $prix . " €" ?></p>
+                            <p><?= $conditionnement ?></p>
                             <?php
                             if($quantite_stock>0){ ?>
                             <label for="quantite">Quantité</label>

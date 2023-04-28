@@ -14,6 +14,7 @@
                     $prix = $unBouquet['prix'];
                     $photo = $unBouquet['photo'];
                     $categorie = $unBouquet['categorie_id1'];
+                    $conditionnement = $unBouquet['typeConditionnement'];
 
                 ?>
                     <form method="GET">
@@ -22,6 +23,7 @@
                             <div>
                                 <p><?= $nom ?></p>
                                 <p><?= $prix . " €" ?></p>
+                                <p><?= $conditionnement ?></p>
                                 <label for="quantite">Quantite</label>
                                 <input style="display: none" type="text" name="uc" value="accueil">
                                 <input style="display: none" type="text" name="categorie" value="<?= $categorie ?>">
@@ -49,6 +51,7 @@
                         $prix = $uneFleur['prix'];
                         $photo = $uneFleur['photo'];
                         $categorie = $uneFleur['categorie_id1'];
+                        $conditionnement = $uneFleur['typeConditionnement'];
 
                     ?>
                         <form method="get">
@@ -57,6 +60,7 @@
                                 <div>
                                     <p><?= $nom ?></p>
                                     <p><?= $prix . " €" ?></p>
+                                    <p><?= $conditionnement ?></p>
                                     <label for="quantite">Quantité</label>
                                     <input style="display: none" type="text" name="uc" value="accueil">
                                     <input style="display: none" type="text" name="categorie" value="<?= $categorie ?>">

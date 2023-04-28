@@ -18,7 +18,8 @@ class M_Article {
      * @return un tableau associatif
      */
     public static function trouveTousLesArticles() {
-        $req = "SELECT id, nom, prix, quantite_stock, photo, categorie_id1 FROM article";
+        $req = "SELECT article.id, article.nom, prix, quantite_stock, photo, conditionnement_id, categorie_id1, conditionnement.nom AS typeConditionnement FROM article
+        JOIN conditionnement ON article.conditionnement_id = conditionnement.id";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($req);
         $statement->execute();
@@ -71,7 +72,9 @@ class M_Article {
     }
 
     public static function trouveLesBouquetsSelectionnes() {
-        $req = "SELECT id, nom, prix, photo, categorie_id1 FROM article WHERE selection = 1 AND categorie_id1 =5";
+        $req = "SELECT article.id, article.nom, prix, quantite_stock, photo, conditionnement_id, categorie_id1, conditionnement.nom AS typeConditionnement FROM article
+        JOIN conditionnement ON article.conditionnement_id = conditionnement.id 
+        WHERE selection = 1 AND categorie_id1 =5";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($req);
         $statement->execute();
@@ -81,7 +84,9 @@ class M_Article {
     }
 
     public static function trouveLesFleurSelectionnees() {
-        $req = "SELECT id, nom, prix, photo, categorie_id1 FROM article WHERE selection = 1 AND categorie_id1 =1";
+        $req = "SELECT article.id, article.nom, prix, quantite_stock, photo, conditionnement_id, categorie_id1, conditionnement.nom AS typeConditionnement FROM article
+        JOIN conditionnement ON article.conditionnement_id = conditionnement.id 
+        WHERE selection = 1 AND categorie_id1 =1";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($req);
         $statement->execute();
