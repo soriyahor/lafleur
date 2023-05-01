@@ -59,7 +59,7 @@
     justify-content: center;
     color: white;
     background-color: var(--violet);
-    height: 10vw;
+    height: 100px;
     text-align: center;
     align-items: center;
     font-size: 1.2em;
@@ -82,6 +82,11 @@
     display: flex;
     margin: auto;
 }
+.map,
+.map2{
+    height: 40vw;
+    width: 50vw;
+}
 
 .compte{
     display: flex;
@@ -95,14 +100,17 @@
 .connexion{
     padding: 2vw 0 0 3vw;
     border: 1px solid black;
-    height: 15vw;
-    width: 22vw;
+    width: 35vw;
+    padding-bottom: 30px;
 }
 .inscription{
     padding: 2vw 0 0 3vw;
     border: 1px solid black;
-    height: 30vw;
-    width: 22vw;
+    width: 35vw;
+    padding-bottom: 30px;
+}
+.inputCompte{
+    width: 80%;
 }
 .boutonCompte{
     background-color: var(--violet);
@@ -144,8 +152,8 @@
 }
 
 .imgVteFleur{
-    width: 27vw;
-    height: 17vw;
+    width: 27rem;
+    height: 17rem;
     border-radius: 10px;
     border: 1px solid black;
 }
@@ -155,6 +163,8 @@
 }
 .cadreBouquet{
     margin-bottom: 3vw;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
 }
 .titreSelection{
     margin-left: 5vw;
@@ -165,8 +175,8 @@
     margin: 4vw auto;
 }
 .ajouterPanier{
-    width: 27vw;
-    height: 3vw;
+    width: 27rem;
+    height: 3rem;
     margin-top: 1vw;
 }
 .voirFleurs{
@@ -184,25 +194,26 @@ button{
     border: 1px solid black;
 }
 .filtre{
-    height: 3vw;
-    width: 10vw;
+    height: 3rem;
+    width: 10rem;
 }
 .containerGrid1{
     display: grid;
     grid-template-columns:
-      minmax(5.4vw, 1fr)
+      minmax(6rem, 1fr)
       [start]
-      repeat(8, minmax(min-content, 14vw))
+      repeat(8, minmax(min-content, 14rem))
       [end]
-      minmax(5.4vw, 1fr);
-  
+      minmax(6rem, 1fr);
+  margin-top: -100px;
+  margin-bottom: -100px;
 }
 .containGrid2 {
     grid-column: start / end;
-    margin: 3vw 0;
+    margin: 12rem 0 12rem 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
-    gap: 5vw;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 3rem;
   }
   .ensFiltre,
   .selectCouleurs{
@@ -212,6 +223,9 @@ button{
   }
   .ensFiltre{
     gap: 3.2vw;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
   }
   .selectCouleurs{
     gap:2vw;
@@ -286,7 +300,138 @@ button{
 .deconnexion{
     margin-left: 10px;
 }
-.rupture{
+table{
+    display: flex;
+    justify-content: center;
+    border:none !important;
+}
+/* .rupture{
     text-align: center;
+} */
+
+@media(width<847px){
+.ligneOne{
+    flex-direction: column;
+    align-items: center;
+}
+.ligneTwo{
+    flex-direction: column-reverse;
+    align-items: center;
+}
+.carre{
+display: flex;
+margin: auto;
+}
+.carreOne,
+.carreTwo{
+    width: 100%;
+}
+.ligneOne .carreTwo,
+.ligneTwo .carreOne{
+background: none;
+}
+.titreQui{
+    text-align: center;
+}
+
+}
+
+/* @media(width <400px){
+
+    .connexion{
+    height: 37vw;
+    width: 38vw;
+    }
+    .inscription {
+        
+        height: 110vw;
+        width: 38vw;
+    }
+    .inputCompte{
+        width: 30vw;
+    }
+    .compte{
+        gap:10vw;
+    }
+} */
+
+@media(max-width:540px){
+    .containerGrid1{
+        display: grid;
+        grid-template-columns:
+          minmax(1rem, 1fr)
+          [start]
+          repeat(8, minmax(min-content, 14rem))
+          [end]
+          minmax(6rem, 1fr);
+      margin-top: -100px;
+      margin-bottom: -100px;
+    }
+
+    .ajouterPanier,
+    .imgVteFleur {
+        width: 20rem;
+    }
+    .imgBanniere{
+        margin: 75px auto 3vw auto;
+    }
+    .box {
+        position: relative;
+      }
+      .cont-lignes {
+        width: 42px;
+        height: 20px;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        left: 90%;
+        transform: translate(-50%, -50%);
+      }
+      .lignes {
+        width: 100%;
+        height: 6px;
+        border-radius: 5px;
+        background-color: black;
+        position: absolute;
+        transition: all 0.3s ease-in-out;
+      }
+      .lignes:nth-child(1) {
+        top: 0px;
+      }
+      .lignes:nth-child(2) {
+        top: 18px;
+      }
+      .lignes:nth-child(3) {
+        top: 36px;
+      }
+      .btn1.active .lignes:nth-child(1) {
+        top: 18px;
+        transform: rotate(135deg);
+      }
+      .btn1.active .lignes:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      .btn1.active .lignes:nth-child(3) {
+        top: 18px;
+        transform: rotate(-135deg);
+      }
+      nav.active {
+        height: 130px;
+      }
+      .smallScreen {
+        display: none;
+      }
+      .navUl {
+        display: block;
+        text-align: center;
+      }
+     
+}
+
+@media(max-width: 460px){
+    table{
+        font-size: 0.7em;
+      };
 }
   

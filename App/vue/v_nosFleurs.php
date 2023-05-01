@@ -61,12 +61,12 @@
                             <input style="display: none" type="text" name="categorie" value="<?= $categorie ?>">
                             <input style="display: none" type="text" name="article" value="<?= $idArticle ?>">
                             <input style="display: none" type="text" name="action" value="ajouterAuPanier">
-                            <input type="number" min="0" max="" name=quantite class="inputQuantite">
+                            <input type="number" min="0" max="" name=quantite class="inputQuantite"><br>
                             <button class="ajouterPanier">Ajouter au panier</button>
                             <?php
                         }else{
                             ?>
-                            <div class="rupture">En rupture de stock</div>
+                            <br><div class="rupture">En rupture de stock</div>
                         <?php 
                         }
                         ?>
