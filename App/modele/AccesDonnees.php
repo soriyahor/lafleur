@@ -22,6 +22,11 @@ class AccesDonnees {
     private static $user = 'root';
     private static $mdp = '';
 
+    // private static $serveur = 'mysql:host=localhost:3306';
+    // private static $bdd = 'dbname=c81hor';
+    // private static $user = 'c81hor';
+    // private static $mdp = 'fumjDKUhR#87G';
+
     /**
      *
      * @var PDO

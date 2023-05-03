@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Requetes sur les exemplaires  de jeux videos
+ * Requetes sur les articles de fleurs
  *
  * @author 
  */
@@ -11,10 +11,8 @@ class M_Article {
     join jeu as j on j.id=e.id_jeu join etat as et on et.id=e.id_etat ";
 
     /**
-     * Retourne sous forme d'un tableau associatif tous les jeux de la
-     * catégorie passée en argument
-     *
-     * @param $idCategorie
+     * Retourne sous forme d'un tableau associatif tous les articles 
+     * @param 
      * @return un tableau associatif
      */
     public static function trouveTousLesArticles() {
@@ -29,7 +27,9 @@ class M_Article {
     }
 
     public static function trouveTousLesArticlesParCategorie($categorie) {
-        $req = "SELECT id, nom, prix, photo, categorie_id1 FROM article WHERE categorie_id1 = :categorie";
+        $req = "SELECT article.id, article.nom, prix, photo, categorie_id1, quantite_stock, conditionnement.nom AS typeConditionnement FROM article
+        JOIN conditionnement ON article.conditionnement_id = conditionnement.id
+        WHERE categorie_id1 = :categorie";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($req);
         $statement->bindParam('categorie', $categorie, PDO::PARAM_INT);
@@ -40,7 +40,11 @@ class M_Article {
     }
 
     public static function trouveTousLesArticlesParCouleur($couleur) {
-        $req = "SELECT art.id, art.nom, art.prix, art.photo, art.categorie_id1, couleur.nom AS nom_couleur FROM article AS art JOIN couleur ON art.couleur_id = couleur.id WHERE couleur.nom = :couleur";
+        $req = "SELECT art.id, art.nom, art.prix, art.photo, art.categorie_id1, couleur.nom AS nom_couleur, art.quantite_stock, conditionnement.nom AS typeConditionnement
+        FROM article AS art 
+        JOIN couleur ON art.couleur_id = couleur.id 
+        JOIN conditionnement ON art.conditionnement_id = conditionnement.id
+        WHERE couleur.nom = :couleur";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($req);
         $statement->bindParam('couleur', $couleur, PDO::PARAM_STR);
@@ -62,7 +66,10 @@ class M_Article {
     }
 
     public static function trouveLesBouquets() {
-        $req = "SELECT art.id, art.nom, art.prix, art.photo, art.categorie_id1, conditionnement_id FROM article AS art WHERE conditionnement_id = 6";
+        $req = "SELECT art.id, art.nom, art.prix, art.photo, art.categorie_id1, conditionnement_id, art.quantite_stock, conditionnement.nom AS typeConditionnement
+        FROM article AS art 
+        JOIN conditionnement ON art.conditionnement_id = conditionnement.id
+        WHERE conditionnement_id = 6";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($req);
         $statement->execute();

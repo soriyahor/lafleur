@@ -220,9 +220,11 @@ class M_Session
         $stmt->execute();
 
         $data = $stmt->fetch();
-        $mdp_bdd = $data['mdp'];
-        
-        return password_verify($mdp, $mdp_bdd);
+        if(!isset($data['mdp'])){
+            return false;
+        }
+                
+        return password_verify($mdp, $data['mdp']);
     }
 
     

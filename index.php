@@ -38,9 +38,6 @@ switch ($uc) {
     case 'commander':
         include 'App/controleur/c_passerCommande.php';
         break;
-    case 'administrer':
-        include 'App/controleur/c_monCompte.php';
-        break;
     case 'inscrire':
         include 'App/controleur/c_monCompte.php';
         break;

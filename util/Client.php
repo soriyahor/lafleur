@@ -13,46 +13,46 @@ class Client {
     private $nom;
     private $date;
     private $mail;
-    private $jeuxVues;
-    private $jeux;
+    private $articlesVues;
+    private $articles;
 
     
     /**
-     * Get the value of jeux
+     * Get the value of articles
      */ 
-    public function getJeux()
+    public function getArticles()
     {
-        return $this->jeux;
+        return $this->articles;
     }
 
     /**
-     * Set the value of jeux
+     * Set the value of articles
      *
      * @return  self
      */ 
-    public function setJeux($jeux)
+    public function setArticles($articles)
     {
-        $this->jeux = $jeux;
+        $this->articles = $articles;
 
         return $this;
     }
 
     /**
-     * Get the value of jeuxVues
+     * Get the value of articlesVues
      */ 
-    public function getJeuxVues()
+    public function getarticlesVues()
     {
-        return $this->jeuxVues;
+        return $this->articlesVues;
     }
 
     /**
-     * Set the value of jeuxVues
+     * Set the value of articlesVues
      *
      * @return  self
      */ 
-    public function setJeuxVues($jeuxVues)
+    public function setarticlesVues($articlesVues)
     {
-        $this->jeuxVues = $jeuxVues;
+        $this->articlesVues = $articlesVues;
 
         return $this;
     }

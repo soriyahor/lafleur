@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Les jeux sont rangés par catégorie
+ * Les articles sont rangés par catégorie
  *
  * 
  */

@@ -1,5 +1,5 @@
 <main>
-    <h1 class="Panier">Panier</h1>
+    <h1 class="titrePanier">Panier</h1>
 
     <div class="containPanier">
     <?php
@@ -17,7 +17,7 @@
             echo $quantite . " (quantite)";
             
             ?>	
-            <a href="index.php?uc=panier&article=<?php echo $idArticle ?>&action=supprimerUnArticle" onclick="return confirm('Voulez-vous vraiment retirer cet article ?');">
+            <a class="retirerPanier" href="index.php?uc=panier&article=<?php echo $idArticle ?>&action=supprimerUnArticle" onclick="return confirm('Voulez-vous vraiment retirer cet article ?');">
                 Retirer du panier
             </a>
         </p>
@@ -31,10 +31,8 @@
         <input style="display: none" type="text" name="uc" value="jeuCasino">
         <input style="display: none" type="text" name="action" value="jeuCasino">
         <br>
-        <button onclick="return confirm('Confirmez-vous votre commande ?');">Passer commande</button>
-    <!-- <a href=index.php?uc=commander&action=passerCommande class="passerCommande">
-        <img src="public/images/commander.jpg" title="Passer commande" >
-    </a> -->
+        <button class="btnCommande" onclick="return confirm('Confirmez-vous votre commande ?');">Passer commande</button>
+
 
     </form>
 

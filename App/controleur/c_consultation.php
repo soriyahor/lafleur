@@ -16,7 +16,6 @@ switch ($action) {
         $bouquet = filter_input(INPUT_GET, 'bouquet');  
         $lesArticles = M_Article::trouveTousLesArticles();
         $lesCategories = M_Categorie::trouveTousLesCategories();
-        
         break;
     case 'voirParCategorie':
             $categorie = filter_input(INPUT_GET, 'categorie');  
@@ -29,7 +28,6 @@ switch ($action) {
     case 'voirParCouleur':
         $couleur = filter_input(INPUT_GET, 'couleur'); 
         $lesArticles = M_Article::trouveTousLesArticlesParCouleur($couleur);
-        // $lesCouleurs = M_article::trouveToutesLesCouleurs();
         break;  
     case 'voirSelection':
         $lesBouquets = M_Article::trouveLesBouquetsSelectionnes();
@@ -46,9 +44,6 @@ switch ($action) {
             $path_parts = pathinfo($previous_page);
             $result = $path_parts['basename']; 
             header('Location: '.$result);
-        
-        // $lesArticles = M_Article::trouveLesArticles();
-        // $lesJeux = M_Exemplaire::trouveLesJeuxDeCategorie($categorie);
         break;
     default:
         $lesArticles = [];

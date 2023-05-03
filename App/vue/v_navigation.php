@@ -9,11 +9,11 @@
             <div class="commerce">
             <?php
                 if (isset($_SESSION['client'])) {
-                ?><div class="voirCommande"><a href="index.php?uc=commandes&action=historique"> Voir mes commandes </a></div>
+                ?><div class="voirCommande"><a href="index.php?uc=commandes&action=historique" title="voir l'historique de commande" ><img src="./public/icon/clock-history.svg" alt="icon historique" class="svg"></a></div>
                 <?php
                 }
                 ?>
-                <div class="lienCompte"><a href="index.php?uc=compte">Compte</a></div>
+                <div class="lienCompte"><a href="index.php?uc=compte" title="compte"><img src="./public/icon/person-fill.svg" alt="icon compte" class="svg"></a></div>
                 <?php
                 if (isset($_SESSION['client'])) {
                     echo $_SESSION['client']->getNom();
@@ -21,11 +21,12 @@
                 ?>
                 <?php
                 if (isset($_SESSION['client'])) {
-                ?> <div class="deconnexion"><a href="index.php?uc=deconnexion&action=deconnexion">Déconnexion</a></div>
+                ?> <div class="deconnexion"><a href="index.php?uc=deconnexion&action=deconnexion" title="Me déconnecter"><img src="./public/icon/box-arrow-left.svg" alt="icon deconnexion" class="svg"></a></div>
                 <?php
                 }
                 ?>
-                <div class="panier"><a href="index.php?uc=panier&action=voirPanier"> Panier</a></div>
+                
+                <div class="panier"><a href="index.php?uc=panier&action=voirPanier" title="voir panier" ><img src="./public/icon/cart-fill.svg" alt="icon panier" class="svg"></a></div>
             </div>
 
         </div>

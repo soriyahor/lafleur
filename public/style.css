@@ -43,15 +43,12 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 1vw;
-    /* position: fixed; */
 }
 .commerce{
     display: flex;
     flex-direction: row;
+    margin-right: 25px;
 }
-/* .panier{
-    margin-left: 2vw;
-} */
 
                     /* Footer */
 .containFooter{
@@ -73,7 +70,7 @@
 .titreQui,
 .selection,
 .titreFleurs,
-.Panier{
+.titrePanier{
     display: flex;
     justify-content: center;
     margin-bottom: 1vw;
@@ -158,8 +155,11 @@
     border: 1px solid black;
 }
 .selectionBouquet{
-    gap:5vw;
-    justify-content: center;
+    gap: 2.5vw;
+    margin-left: 5vw;
+    margin-right: 4vw;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
 }
 .cadreBouquet{
     margin-bottom: 3vw;
@@ -182,12 +182,16 @@
 .voirFleurs{
     display: flex;
     margin: 3vw auto;
-    height: 3vw;
-    width: 15vw;
+    height: 3rem;
+    width: 15rem;
     justify-content: center;
     align-items: center;
     background-color: #5F0267;
     color: white;
+}
+.btnCommande{
+    height: 2rem;
+    width: 10rem;
 }
 button{
     border-radius: 10px;
@@ -242,8 +246,29 @@ button{
     margin-left: 4.5vw;
 }
 
+.voirCommande,
+.panier,
+.lienCompte,
+.deconnexion{
+    margin-right: 10px;
+}
+.deconnexion{
+    margin-left: 10px;
+}
+table{
+    display: flex;
+    justify-content: center;
+    border:none !important;
+}
 
+.svg{
+    height: 120%;
+}
+.retirerPanier{
+    color:red;
+}
 
+                        /* Jeu de la roulette */
 .jeu {
 	text-align:center;
 }
@@ -291,25 +316,10 @@ button{
 .reset {
 	clear:both;
 }
-.voirCommande,
-.panier,
-.lienCompte,
-.deconnexion{
-    margin-right: 10px;
-}
-.deconnexion{
-    margin-left: 10px;
-}
-table{
-    display: flex;
-    justify-content: center;
-    border:none !important;
-}
-/* .rupture{
-    text-align: center;
-} */
 
-@media(width<847px){
+                        /* Media queries */
+
+@media(max-width:847px){
 .ligneOne{
     flex-direction: column;
     align-items: center;
@@ -336,24 +346,6 @@ background: none;
 
 }
 
-/* @media(width <400px){
-
-    .connexion{
-    height: 37vw;
-    width: 38vw;
-    }
-    .inscription {
-        
-        height: 110vw;
-        width: 38vw;
-    }
-    .inputCompte{
-        width: 30vw;
-    }
-    .compte{
-        gap:10vw;
-    }
-} */
 
 @media(max-width:540px){
     .containerGrid1{
@@ -367,14 +359,20 @@ background: none;
       margin-top: -100px;
       margin-bottom: -100px;
     }
-
+    .inputQuantite{
+        width: 8vw;
+    }
     .ajouterPanier,
     .imgVteFleur {
         width: 20rem;
     }
-    .imgBanniere{
-        margin: 75px auto 3vw auto;
+    
+    .imgLogo {
+    margin: 5px auto 0 auto;
+    width: 10rem;
+    height: 10rem;
     }
+
     .box {
         position: relative;
       }
@@ -386,6 +384,7 @@ background: none;
         top: 50%;
         left: 90%;
         transform: translate(-50%, -50%);
+        margin-top: -63px;
       }
       .lignes {
         width: 100%;
@@ -419,6 +418,9 @@ background: none;
       nav.active {
         height: 130px;
       }
+      .imgBanniere.active{
+        margin: 175px auto 3vw auto;
+    }
       .smallScreen {
         display: none;
       }

@@ -22,13 +22,13 @@ function supprimerPanier() {
 }
 
 /**
- * Ajoute un jeu au panier
+ * Ajoute un article au panier
  *
- * Teste si l'identifiant du jeu est déjà dans la variable session 
+ * Teste si l'identifiant de l'article est déjà dans la variable session 
  * ajoute l'identifiant à la variable de type session dans le cas où
- * où l'identifiant du jeu n'a pas été trouvé
- * @param $idJeu : identifiant de jeu
- * @return vrai si le jeu n'était pas dans la variable, faux sinon 
+ * où l'identifiant de l'article n'a pas été trouvé
+ * @param $idArticle : identifiant de l'article
+ * @return vrai si l'article n'était pas dans la variable, faux sinon 
  */
 function ajouterAuPanier($idArticle, int $quantite) {
     afficheMessage("Cet article a été ajouté");
@@ -44,9 +44,9 @@ function ajouterAuPanier($idArticle, int $quantite) {
 }
 
 /**
- * Retourne les jeux du panier
+ * Retourne les article du panier
  *
- * Retourne le tableau des identifiants de jeu
+ * Retourne le tableau des identifiants de l'article
  * @return : le tableau
  */
 function getLesIdArticlesDuPanier() {
@@ -54,7 +54,7 @@ function getLesIdArticlesDuPanier() {
 }
 
 /**
- * Retourne le nombre de jeux du panier
+ * Retourne le nombre d'article du panier
  *
  * Teste si la variable de session existe
  * et retourne le nombre d'éléments de la variable session
@@ -69,11 +69,11 @@ function nbArticlesDuPanier() {
 }
 
 /**
- * Retire un de jeux du panier
+ * Retire un des articles du panier
  *
- * Recherche l'index de l'idProduit dans la variable session
+ * Recherche l'index de l'idArticle dans la variable session
  * et détruit la valeur à ce rang
- * @param $idProduit : identifiant de jeu
+ * @param $idArticle : identifiant de l'article
 
  */
 function retirerDuPanier($idArticle) {
