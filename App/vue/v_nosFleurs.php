@@ -61,7 +61,7 @@
                                 <input style="display: none" type="text" name="article" value="<?= $idArticle ?>">
                                 <input style="display: none" type="text" name="action" value="ajouterAuPanier">
                                 <label>Quantité</label>
-                                <input type="number" min="0" max="" name=quantite class="inputQuantite" value="1"><br>
+                                <input type="number" min="0" name=quantite class="inputQuantite" value="1"><br>
                                 <button class="ajouterPanier">Ajouter au panier</button>
                             <?php
                             } else {
