@@ -147,7 +147,7 @@ function checkWin() {
 
     loteries.forEach((element) => {
       console.log("loterie", element);
-      sum += element.quantite_restant;
+      sum += Number(element.quantite_restant);
     });
 
     console.log("sum", sum);
@@ -155,7 +155,7 @@ function checkWin() {
     let sommeEncours = 0;
     loteries.forEach((element) => {
       console.log("loterie", element);
-      sommeEncours += element.quantite_restant;
+      sommeEncours += Number(element.quantite_restant);
       element.winRate = sommeEncours / sum;
     });
 
@@ -163,7 +163,7 @@ function checkWin() {
 
     let array = ["0"];
     loteries.forEach((element) => {
-      array.push(element.winRate.toFixed(2));
+      array.push(Number(element.winRate.toFixed(2)));
     });
     console.log("arr", array);
 

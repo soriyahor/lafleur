@@ -1,17 +1,17 @@
-﻿<?php
+<?php
 
 /**
  * Classe d'accès aux données.
 
  * Utilise les services de la classe PDO
- * pour l'application Lord Of Geek (LOG)
+ * pour la boutique lafleur
  * Les attributs sont tous statiques,
  * les 4 premiers pour la connexion
  * $monPdo de type PDO
  * $monPdoGsb qui contiendra l'unique instance de la classe
  *
  * @package default
- * @author Loïc LOG
+ * @author 
  * @version    1.0
  * @link       http://www.php.net/manual/fr/book.pdo.php
  */

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Lusitana");
+
 *{
     margin: 0;
     padding: 0;
@@ -70,10 +72,12 @@
 .titreQui,
 .selection,
 .titreFleurs,
-.titrePanier{
+.titrePanier,
+.titreBlog{
     display: flex;
     justify-content: center;
     margin-bottom: 1vw;
+    font-family: Lusitana, Arial, Helvetica, sans-serif;
 }
 .map{
     display: flex;
@@ -267,6 +271,46 @@ table{
 .retirerPanier{
     color:red;
 }
+.page404{
+text-align: center;
+}
+.blog{
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+.blogArt{
+    list-style: none;
+}
+.pub{
+    text-align: center;
+    background: rgba(255, 208, 232, 0.29);
+    /* background-image: url(images/pub.jpg); */
+    /* background-repeat: no-repeat; */
+    /* background-size: contain; */
+    width: 90%;
+    height: 30%;
+    margin: auto;
+    padding-top: 20px;
+    border: 2px solid #5F0267;
+    /* filter: brightness(60%); */
+}
+.titreEvent{
+    padding-top: 2%;
+}
+.titreEvent,
+.pEvent{
+    color: black;
+    font-weight: bold;
+}
+iframe {
+    border: none;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
 
                         /* Jeu de la roulette */
 .jeu {

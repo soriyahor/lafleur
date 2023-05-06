@@ -1,6 +1,6 @@
-﻿<?php
-include 'App/modele/M_categorie.php';
-include 'App/modele/M_article.php';
+<?php
+include 'App/modele/M_Categorie.php';
+include 'App/modele/M_Article.php';
 
 /**
  * Controleur pour la consultation des articles

@@ -31,9 +31,6 @@
         case 'quiSommesNous':
             include 'v_quiSommesNous.php';
             break;
-        case 'blog':
-            include 'blog.php';
-            break;
         case 'contact':
             include 'v_contact.php';
             break;
@@ -52,6 +49,12 @@
         case '':
             include 'v_accueil.php';
             break;
+        case 'blog':
+            include 'v_blog.php';
+            break;
+        default:
+        include 'v_404.php';
+        die();
     }
 
     include 'v_footer.php';

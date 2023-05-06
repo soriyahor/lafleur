@@ -1,5 +1,5 @@
-<main>
-    <h1 class="quiSommesNous">Qui sommes nous ?</h1>
+<section>
+    <h2 class="quiSommesNous">Qui sommes nous ?</h2>
 
     <div class="presentation">
 
@@ -29,10 +29,9 @@
             </div>
 
         </div>
-
-
     </div>
 
+</section>
 
 
-</main>
+

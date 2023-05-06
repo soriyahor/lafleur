@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
  * Initialise le panier

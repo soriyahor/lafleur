@@ -55,21 +55,22 @@
                             <p><?= $prix . " €" ?></p>
                             <p><?= $conditionnement ?></p>
                             <?php
-                            if($quantite_stock>0){ ?>
-                            <label for="quantite">Quantité</label>
-                            <input style="display: none" type="text" name="uc" value="accueil">
-                            <input style="display: none" type="text" name="categorie" value="<?= $categorie ?>">
-                            <input style="display: none" type="text" name="article" value="<?= $idArticle ?>">
-                            <input style="display: none" type="text" name="action" value="ajouterAuPanier">
-                            <input type="number" min="0" max="" name=quantite class="inputQuantite"><br>
-                            <button class="ajouterPanier">Ajouter au panier</button>
+                            if ($quantite_stock > 0) { ?>
+                                <input style="display: none" type="text" name="uc" value="accueil">
+                                <input style="display: none" type="text" name="categorie" value="<?= $categorie ?>">
+                                <input style="display: none" type="text" name="article" value="<?= $idArticle ?>">
+                                <input style="display: none" type="text" name="action" value="ajouterAuPanier">
+                                <label>Quantité</label>
+                                <input type="number" min="0" max="" name=quantite class="inputQuantite" value="1"><br>
+                                <button class="ajouterPanier">Ajouter au panier</button>
                             <?php
-                        }else{
+                            } else {
                             ?>
-                            <br><div class="rupture">En rupture de stock</div>
-                        <?php 
-                        }
-                        ?>
+                                <br>
+                                <div class="rupture">En rupture de stock</div>
+                            <?php
+                            }
+                            ?>
                         </div>
 
                     </div>

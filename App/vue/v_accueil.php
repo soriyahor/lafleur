@@ -2,6 +2,13 @@
 
     <h1 class="selection">Notre sélection</h1>
 
+    <div class="pub">
+
+        <h2 class="titreEvent">Fête des meres</h2><br>
+        <p class="pEvent">Du 21 mai au 4 juin 2023, pour toute commande en ligne, tentez de gagner des cadeaux avec notre loterie spéciale fête des mères</p>
+    </div>
+
+
     <div>
         <div class="cadreBouquet">
 
@@ -19,17 +26,17 @@
                 ?>
                     <form method="GET">
                         <div>
-                            <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur" />
+                            <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur">
                             <div>
                                 <p><?= $nom ?></p>
                                 <p><?= $prix . " €" ?></p>
                                 <p><?= $conditionnement ?></p>
-                                <label for="quantite">Quantite</label>
                                 <input style="display: none" type="text" name="uc" value="accueil">
                                 <input style="display: none" type="text" name="categorie" value="<?= $categorie ?>">
                                 <input style="display: none" type="text" name="article" value="<?= $idBouquet ?>">
                                 <input style="display: none" type="text" name="action" value="ajouterAuPanier">
-                                <input type="number" min="0" max="" name=quantite class="inputQuantite">
+                                <label>Quantite</label>
+                                <input type="number" min="0" name=quantite class="inputQuantite" value="1">
                                 <br><button class="ajouterPanier">Ajouter au panier</button>
                             </div>
                         </div>
@@ -56,17 +63,17 @@
                     ?>
                         <form method="get">
                             <div>
-                                <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur" />
+                                <img src="./public/photo/<?= $photo ?>" alt="Image d'article fleuriste" class="imgVteFleur">
                                 <div>
                                     <p><?= $nom ?></p>
                                     <p><?= $prix . " €" ?></p>
                                     <p><?= $conditionnement ?></p>
-                                    <label for="quantite">Quantité</label>
                                     <input style="display: none" type="text" name="uc" value="accueil">
                                     <input style="display: none" type="text" name="categorie" value="<?= $categorie ?>">
                                     <input style="display: none" type="text" name="article" value="<?= $idFleur ?>">
-                                    <input style="display: none" type="text" name="action" value="ajouterAuPanier" >
-                                    <input type="number" min="0" max="" name="quantite" class="inputQuantite">
+                                    <input style="display: none" type="text" name="action" value="ajouterAuPanier">
+                                    <label>Quantité</label>
+                                    <input type="number" min="0" name="quantite" class="inputQuantite" value="1">
                                     <br><button class="ajouterPanier">Ajouter au panier</button>
 
                                 </div>
@@ -81,14 +88,20 @@
             </div>
 
         </div>
-        <a href="index.php?uc=nosFleurs&action=voirTousLesArticles">
-            <button class="voirFleurs">Voir nos fleurs</button></a>
-        </a>
+
+        <form method="get">
+            <input style="display: none" type="text" name="uc" value="nosFleurs">
+            <input style="display: none" type="text" name="action" value="voirTousLesArticles">
+            <button class="voirFleurs">Voir nos fleurs</button>
+        </form>
     </div>
 
     <?php
 
     include 'v_quiSommesNous.php';
     ?>
-    <iframe class="map2" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=chemin%20de%20la%20fabrique,%2084160%20Lourmarin+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/distance-area-calculator.html">distance maps</a></iframe>
+    <div>
+        <iframe class="map2" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=chemin%20de%20la%20fabrique,%2084160%20Lourmarin+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+    </div>
+
 </main>

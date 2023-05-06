@@ -37,8 +37,9 @@ function estUnMail($mail) {
     return preg_match('#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#', $mail);
 }
 
+// vérifier si un mot de passe contient au moins 8 caractères, avec au moins une lettre majuscule, une lettre minuscule, un chiffre et des caractères spéciaux
 // function estUnMdp($mdp){
-//     return preg_match(''), $mdp;
+//     return preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/', $mdp);
 // }
 
 

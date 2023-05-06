@@ -7,9 +7,9 @@
             <?php
             ?>
             <div class="commerce">
-            <?php
+                <?php
                 if (isset($_SESSION['client'])) {
-                ?><div class="voirCommande"><a href="index.php?uc=commandes&action=historique" title="voir l'historique de commande" ><img src="./public/icon/clock-history.svg" alt="icon historique" class="svg"></a></div>
+                ?><div class="voirCommande"><a href="index.php?uc=commandes&action=historique" title="voir l'historique de commande"><img src="./public/icon/clock-history.svg" alt="icon historique" class="svg"></a></div>
                 <?php
                 }
                 ?>
@@ -25,8 +25,8 @@
                 <?php
                 }
                 ?>
-                
-                <div class="panier"><a href="index.php?uc=panier&action=voirPanier" title="voir panier" ><img src="./public/icon/cart-fill.svg" alt="icon panier" class="svg"></a></div>
+
+                <div class="panier"><a href="index.php?uc=panier&action=voirPanier" title="voir panier"><img src="./public/icon/cart-fill.svg" alt="icon panier" class="svg"></a></div>
             </div>
 
         </div>
@@ -54,6 +54,7 @@
                     <div class="lignes"></div>
                 </div>
             </div>
+        </div>
     </nav>
     <div class="banniere">
         <img src="./public/images/entete.jpg" alt="enteteLafleur" class="imgBanniere">

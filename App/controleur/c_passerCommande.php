@@ -1,6 +1,6 @@
 <?php
 
-include 'App/modele/M_commande.php';
+include 'App/modele/M_Commande.php';
 include 'App/modele/M_Loterie.php';
 
 /**
@@ -41,7 +41,9 @@ switch ($action) {
             afficheErreurs($errors);
         } else {
             supprimerPanier();
+            header('location: index.php?uc=accueil');
             afficheMessage("Commande enregistrée");
+            
         }
 
         break;
