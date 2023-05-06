@@ -7,9 +7,6 @@
  */
 class M_Article {
 
-    const sql = "SELECT e.id, j.nom, statut, description, prix, image, id_categories FROM exemplaires as e
-    join jeu as j on j.id=e.id_jeu join etat as et on et.id=e.id_etat ";
-
     /**
      * Retourne sous forme d'un tableau associatif tous les articles 
      * @param 
