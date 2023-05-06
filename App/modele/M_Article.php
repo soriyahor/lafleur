@@ -22,7 +22,12 @@ class M_Article {
         $lesLignes = $statement->fetchAll();
         return $lesLignes;
     }
-
+/**
+ * Permets de trouver les articles par catégorie
+ *
+ * @param [type] $categorie
+ * @return void
+ */
     public static function trouveTousLesArticlesParCategorie($categorie) {
         $req = "SELECT article.id, article.nom, prix, photo, categorie_id1, quantite_stock, conditionnement.nom AS typeConditionnement FROM article
         JOIN conditionnement ON article.conditionnement_id = conditionnement.id
@@ -35,7 +40,12 @@ class M_Article {
         $lesLignes = $statement->fetchAll();
         return $lesLignes;
     }
-
+/**
+ * Permets de trouver les articles par couleur
+ *
+ * @param string $couleur
+ * @return void
+ */
     public static function trouveTousLesArticlesParCouleur($couleur) {
         $req = "SELECT art.id, art.nom, art.prix, art.photo, art.categorie_id1, couleur.nom AS nom_couleur, art.quantite_stock, conditionnement.nom AS typeConditionnement
         FROM article AS art 
@@ -51,7 +61,11 @@ class M_Article {
         return $lesLignes;
     }
 
-
+/**
+ * Permets de trouver toutes les catégories
+ *
+ * @return void
+ */
     public static function trouveLesCategories() {
         $req = "SELECT nom, id FROM categorie";
         $pdo=AccesDonnees::getPdo();
@@ -61,7 +75,11 @@ class M_Article {
         $lesLignes = $statement->fetchAll();
         return $lesLignes;
     }
-
+/**
+ * Permets de trouver tous les bouquets
+ *
+ * @return void
+ */
     public static function trouveLesBouquets() {
         $req = "SELECT art.id, art.nom, art.prix, art.photo, art.categorie_id1, conditionnement_id, art.quantite_stock, conditionnement.nom AS typeConditionnement
         FROM article AS art 
@@ -75,6 +93,12 @@ class M_Article {
         return $lesLignes;
     }
 
+    /**
+     * Permets de trouver tous les bouquets selectionnés (selection = 1)
+     * categorie5 = bouquet
+     *
+     * @return void
+     */
     public static function trouveLesBouquetsSelectionnes() {
         $req = "SELECT article.id, article.nom, prix, quantite_stock, photo, conditionnement_id, categorie_id1, conditionnement.nom AS typeConditionnement FROM article
         JOIN conditionnement ON article.conditionnement_id = conditionnement.id 
@@ -86,11 +110,16 @@ class M_Article {
         $lesLignes = $statement->fetchAll();
         return $lesLignes;
     }
-
+/**
+ * Permets de trouver toutes les fleurs selectionnés (selection = 1)
+ * categorie !=5 -> ne soit pas un bouquet
+ *
+ * @return void
+ */
     public static function trouveLesFleurSelectionnees() {
         $req = "SELECT article.id, article.nom, prix, quantite_stock, photo, conditionnement_id, categorie_id1, conditionnement.nom AS typeConditionnement FROM article
         JOIN conditionnement ON article.conditionnement_id = conditionnement.id 
-        WHERE selection = 1 AND categorie_id1 =1";
+        WHERE selection = 1 AND categorie_id1 !=5";
         $pdo=AccesDonnees::getPdo();
         $statement=$pdo->prepare($req);
         $statement->execute();
@@ -98,7 +127,11 @@ class M_Article {
         $lesLignes = $statement->fetchAll();
         return $lesLignes;
     }
-   
+   /**
+    * Permet de trouver toutes les couleurs
+    *
+    * @return void
+    */
     public static function trouveToutesLesCouleurs() {
         $req = "SELECT * FROM couleur";
         $pdo=AccesDonnees::getPdo();
@@ -109,7 +142,7 @@ class M_Article {
         return $lesLignes;
     }
     /**
-     * Retourne les jeux concernés par le tableau des idProduits passée en argument
+     * Retourne les articles concernés par le tableau des idProduits passée en argument
      *
      * @param $desIdJeux tableau d'idProduits
      * @return un tableau associatif

@@ -8,7 +8,14 @@ class M_Commande
 {
 
 
-
+/**
+ * Permets de creer la livraison client
+ *
+ * @param [int] $idClient
+ * @param [string] $prixLivraison
+ * @param [string] $dateLivraison
+ * @return void
+ */
     public static function creerLivraison($idClient, $prixLivraison, $dateLivraison)
     {
 
