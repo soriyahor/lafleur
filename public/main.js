@@ -71,6 +71,8 @@ start.addEventListener("click", spin);
 var result = document.getElementById("resultat");
 
 function spin() {
+
+  // permets d'attribuer un index de position aléatoire pour les trois roulettes, qui seront utilisées pour initialiser la position de départ de chaque roulette lors du lancement de la fonction spin()
   start.style.pointerEvents = "none";
   var roulette1Pos = Math.floor(Math.random() * posArr.length),
     roulette2Pos = Math.floor(Math.random() * posArr.length),
@@ -82,6 +84,8 @@ function spin() {
   var roulette2 = document.getElementById("roulette2");
   var roulette3 = document.getElementById("roulette3");
 
+
+  //  anime la première roulette en modifiant la position de l'image de fond à chaque itération, jusqu'à ce que la roulette tourne un certain nombre de fois (count > 50) 
   var blur1 = setInterval(function () {
     roulette1.style.backgroundPosition = "0px " + posArr[roulette1Pos] + "px";
     roulette1Pos++;
@@ -133,7 +137,7 @@ function checkWin() {
         res = res.substring(1);
       }
       loteries = JSON.parse(res);
-      console.log("loteries", loteries);
+      // console.log("loteries", loteries);
     };
     xhttp.open(
       "GET",
@@ -146,29 +150,29 @@ function checkWin() {
     let sum = 0;
 
     loteries.forEach((element) => {
-      console.log("loterie", element);
+      // console.log("loterie", element);
       sum += Number(element.quantite_restant);
     });
 
-    console.log("sum", sum);
+    // console.log("sum", sum);
 
     let sommeEncours = 0;
     loteries.forEach((element) => {
-      console.log("loterie", element);
+      // console.log("loterie", element);
       sommeEncours += Number(element.quantite_restant);
       element.winRate = sommeEncours / sum;
     });
 
-    console.log("loteries", loteries);
+    // console.log("loteries", loteries);
 
     let array = ["0"];
     loteries.forEach((element) => {
       array.push(Number(element.winRate.toFixed(2)));
     });
-    console.log("arr", array);
+    // console.log("arr", array);
 
     let rate = Math.random().toFixed(2);
-    console.log("rate", rate);
+    // console.log("rate", rate);
 
     let lot = -1;
     let max = 1,
@@ -176,18 +180,18 @@ function checkWin() {
 
     for (let index = 0; index < array.length; index++) {
       const element = array[index];
-      console.log("element", element);
+      // console.log("element", element);
       if (rate > element && element > min) {
-        console.log("min", element);
+        // console.log("min", element);
         min = element;
       } else if (rate <= element && element <= max) {
-        console.log("max", element);
+        // console.log("max", element);
         max = element;
         lot = index;
       }
     }
 
-    console.log("min max index", min, max, lot);
+    // console.log("min max index", min, max, lot);
 
     roulette1.style.backgroundPosition = "0px " + posArr[lot] + "px";
     roulette2.style.backgroundPosition = "0px " + posArr[lot] + "px";
