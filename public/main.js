@@ -111,7 +111,9 @@ function spin() {
   }, speed);
 }
 
-// Permet attribuer le lot gagné
+/**
+ * Permet attribuer le lot gagné
+ */
 function checkWin() {
   completed++;
 
