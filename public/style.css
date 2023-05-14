@@ -117,6 +117,12 @@
     background-color: var(--violet);
     color: white;
 }
+.pageCompte{
+    display: flex;
+    margin-left: 5vw;
+    margin-top: 4vw;
+    gap:19vw;
+}
 .ligneOne,
 .ligneTwo{
     display: flex;
@@ -147,7 +153,11 @@
     background-color: #F5F5F5;
 }
 .quiSommesNous,
-.selection{
+.selection,
+.titrePanier,
+.titreBlog,
+.titreFleurs,
+.compte{
     text-decoration: underline;
     margin-bottom: 4vw;
 }
@@ -159,7 +169,7 @@
     border: 1px solid black;
 }
 .selectionBouquet{
-    gap: 2.5vw;
+    gap: 3vw;
     margin-left: 5vw;
     margin-right: 4vw;
     flex-wrap: wrap;
@@ -315,6 +325,7 @@ iframe {
                         /* Jeu de la roulette */
 .jeu {
 	text-align:center;
+    margin: auto;
 }
 .containerRoulette {
 	margin:0 auto;

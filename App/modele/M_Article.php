@@ -144,7 +144,7 @@ class M_Article {
     /**
      * Retourne les articles concernés par le tableau des idProduits passée en argument
      *
-     * @param $desIdJeux tableau d'idProduits
+     * @param $desIdArticles tableau d'idProduits
      * @return un tableau associatif
      */
     public static function trouveLesArticlesDuTableau($desIdArticles) {

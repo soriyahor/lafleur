@@ -2,7 +2,9 @@
 
     <h1 class="compte">Mon compte</h1>
 
-    <div class="compte">
+    <div class="pageCompte">
+
+    <div class="compteConnexion">
         <div class="cadreCompte">
             <div class="titreCompte">J'ai déjà un compte</div>
             <form action="index.php?uc=inscrire&action=connexion" method="POST">
@@ -44,6 +46,6 @@
         </form>
 
     </div>
-
+    </div>
 
 </main>

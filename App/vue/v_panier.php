@@ -35,12 +35,12 @@
                 <button class="btnCommande" onclick="return confirm('Confirmez-vous votre commande ?');">Passer commande</button>
             <?php
             } else {  ?>
-                <p>Vous devez être connecté pour pouvoir commander.</p><br>
+                <p style="color:red";>Vous devez être connecté pour pouvoir commander.</p><br>
             <?php } ?>
 
 
 
-        </form>
+        </form><br>
         <p><strong>Informations : </strong></p>
         <p>Nous livrons que les villes aux alentours de Lourmarin</p>
         <p>Les frais de livraison sont de 2,99 euros pour chaque commande inférieure à 50 euros. Au-delà de ce montant, les livraisons sont gratuites. </p>

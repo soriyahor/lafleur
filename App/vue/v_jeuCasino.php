@@ -18,8 +18,8 @@
             </div>
         </div>
 
-        <form method="get" style="display: none;">
-            <input type="number" min="1" max="100" value="<?php $dateLivraison ?>" name=dateLivraison>
+       <form method="get" style="display: none;">
+            <input type="number" min="1" max="100" value="<?php echo $dateLivraison ?>" name=dateLivraison>
             <input type="number" min="-1" max="" value="-1" name=idLoterie>
             <input style="display: none" type="text" name="uc" value="commander">
             <input style="display: none" type="text" name="action" value="passerCommande">

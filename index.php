@@ -19,9 +19,8 @@ initPanier();
 if (!$uc) {
     $uc = 'accueil';
 }
-if(!$action && $uc == 'accueil' ){
+if (!$action && $uc == 'accueil') {
     $action = 'voirSelection';
-
 }
 
 // Controleur principale
@@ -41,6 +40,9 @@ switch ($uc) {
     case 'inscrire':
         include 'App/controleur/c_monCompte.php';
         break;
+    case 'jeuCasino':
+        include 'App/controleur/c_passerCommande.php';
+        break;
     case 'commandes':
         include 'App/controleur/c_monCompte.php';
         break;
@@ -51,9 +53,8 @@ switch ($uc) {
         break;
 }
 
-if(!isset($json)){
+if (!isset($json)) {
     include("App/vue/v_template.php");
-}else {
+} else {
     header("Content-Type: application/json");
 }
-
