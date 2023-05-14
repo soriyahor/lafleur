@@ -11,7 +11,7 @@ switch ($action) {
     case 'historique':
         if (isset($_SESSION['client'])) {
             $commandes = M_Commande::voirCommandes();
-        }else{
+        } else {
             $commandes = [];
         }
         break;
@@ -30,11 +30,13 @@ switch ($action) {
         if (count($errors) > 0) {
             // Si une erreur, on recommence
             afficheErreurs($errors);
-        } if($mdp === $confirmMdp){
+            break;
+        }
+        if ($mdp === $confirmMdp) {
             M_Compte::CreerInscription($nom, $prenom, $numRue, $rue, $cp, $ville, $mail, $mdp);
             afficheMessage("Votre compte est créé");
             $uc = '';
-        }else {
+        } else {
             afficheMessage("Vous n'avez pas le même mot de passe. Veuillez recommencer.");
         }
         break;
@@ -47,14 +49,14 @@ switch ($action) {
             afficheErreurs($errors);
         } else {
             $uc = '';
-            if(!isset($_SESSION['client'])){
+            if (!isset($_SESSION['client'])) {
                 $utilisateur = M_Compte::recupererUtilisateur($mail);
                 $client = new Client($utilisateur['id'], $utilisateur['nom'], date('\l\e d/m/Y à H:i:s'), $mail);
                 $_SESSION['client'] = $client;
             }
             header('location: index.php');
         }
-        
+
         break;
     case 'deconnexion':
         M_Session::deconnexion();

@@ -149,7 +149,7 @@ class M_Compte
             $erreurs[] = "Il faut saisir le champ ville";
         }
         if ($cp == "") {
-            $erreurs[] = "Il faut saisir le champ Code postal";
+            $erreurs[] = "Il faut saisir le champ Code postal !";
         } else if (!estUnCp($cp)) {
             $erreurs[] = "erreur de code postal";
         }
@@ -161,7 +161,11 @@ class M_Compte
         }
         if ($mdp == "") {
             $erreurs[] = "Il faut saisir un mot de passe";
-        } else if (!estUnMail($mail)) {
+        }
+        if (!estUnMdp($mdp)) {
+            $erreurs[] = "erreur de mdp : le mot de passe doit avoir au moins 8 caractères, avec au moins une lettre majuscule, une lettre minuscule, un chiffre";
+        }
+        if (!estUnMail($mail)) {
             $erreurs[] = "erreur de mail";
         }
         return $erreurs;

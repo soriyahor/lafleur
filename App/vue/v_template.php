@@ -52,9 +52,9 @@
         case 'blog':
             include 'v_blog.php';
             break;
-        default:
-        include 'v_404.php';
-        die();
+        // default:
+        // include 'v_404.php';
+        // die();
     }
 
     include 'v_footer.php';
